@@ -2,18 +2,18 @@
  * Created by Sven on 8/15/16.
  */
 import React, {Component} from 'react';
-import Slider from './preference_slider'
+import Slider from '../components/preference_slider'
 
 const categories = ['Safety', 'Education', 'Transportation', 'Parks', 'Rent'];
 const SliderContainer = class extends Component {
   render() {
     return(
       <form>
-        {categories.map((category) => {
+        {categories.map((category, idx) => {
           return(
             <div>
               <label>{category}</label>
-              <Slider category={category} />
+              <Slider key={idx} category={category} id={category}/>
             </div>
           )
         })}

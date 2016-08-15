@@ -4,12 +4,15 @@
 import React, {Component} from 'react';
 
 const Slider = class extends Component {
-  handleSubmit(event){
-    event.preventDefault()
+  showValue(event){
+    document.getElementById("range").innerHTML=event.target.value;
   }
   render() {
     return(
-    <input type="range" default="5" min="0" max="10" step="1"/>
+      <div>
+        <input id={this.props.id} type="range" default="5" min="0" max="10" step="1" onChange={this.showValue}/>
+        <span id="range">5</span>
+      </div>
     )
   }
 };
