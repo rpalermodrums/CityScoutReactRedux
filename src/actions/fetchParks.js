@@ -2,7 +2,7 @@ import axios from 'axios'
 
 function fetchParks(){
 
-  const url = 'http://localhost:3000/crimes'
+  const url = 'http://localhost:3000/parks'
   const request = axios.get(url)
   console.log('request', request)
 
