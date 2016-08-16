@@ -12,12 +12,9 @@ const SliderContainer = class extends Component {
   handleSubmit(event){
     var preferences = []
     for (var i = 0; i < 5; i++) {
-      preferences.push(parseInt(event.target
-                            .children[i]
-                            .children[1]
-                            .children[0]
-                            .value, 10))
+      preferences.push(Object.assign( { document.getElementById(`${categories[i]}`): parseInt(event.target.children[i].children[1].children[0].value, 10)})
     }
+    debugger
     event.preventDefault();
     getPreferences(preferences)
   }
