@@ -19,7 +19,6 @@ const SliderContainer = class extends Component {
                             .value, 10))
     }
     event.preventDefault();
-    debugger
     getPreferences(preferences)
   }
   render() {
