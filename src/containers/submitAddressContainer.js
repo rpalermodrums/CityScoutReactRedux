@@ -9,20 +9,26 @@ class SubmitAddressContainer extends Component {
   handleSubmit(event) {
     event.preventDefault();
     text = event.target.firstChild.value;
-    getAddress(text);
+    this.props.getAddress(text);
   }
+
   render(){
-    debugger;
     return (
       <div>
         <h1>Welcome to CityScout NYC</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <input type='text' placeholder='enter address' />
           <input type='submit' />
-          <Address text={text}/>
+          <Address text={this.props.address}/>
         </form>
       </div>
     )
+  }
+}
+
+function mapStateToProps(state){
+  return {
+    address: state.address.address
   }
 }
 
@@ -30,4 +36,4 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators({getAddress}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(SubmitAddressContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(SubmitAddressContainer)
