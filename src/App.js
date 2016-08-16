@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SubmitAddressContainer from './containers/submitAddressContainer.js'
-import SliderContainer from './containers/preferences_sliders_container'
+import SliderContainer from './containers/preferencesSlidersContainer'
 
 class App extends Component {
   render() {

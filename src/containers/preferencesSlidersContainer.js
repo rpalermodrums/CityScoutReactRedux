@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {getPreferences} from '../actions/getPreferences'
-import Slider from '../components/preference_slider'
+import Slider from '../components/preferenceSlider'
 
 const categories = ['Safety', 'Education', 'Transportation', 'Parks', 'Rent'];
 const SliderContainer = class extends Component {
