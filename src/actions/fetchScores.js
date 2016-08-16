@@ -1,9 +1,9 @@
-import axios from 'axios'
+import Axios from 'axios'
 
 function fetchScores(){
 
   const url = 'http://localhost:3000/scores'
-  const request = axios.get(url)
+  const request = Axios.get(url)
   console.log('request', request)
 
   return {
