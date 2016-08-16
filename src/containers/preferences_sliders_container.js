@@ -42,4 +42,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({getPreferences}, dispatch)
 }
 
-export default connect(mapDispatchToProps)(SliderContainer)
+export default connect(null, mapDispatchToProps)(SliderContainer)

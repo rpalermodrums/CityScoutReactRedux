@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 // Mapping of state
 const rootReducer = combineReducers({
-  // state: reducer
+  address: searchReducer
   // crimes: CrimesReducer,
   // parks: ParksReducer,
   // schools: SchoolsReducer,

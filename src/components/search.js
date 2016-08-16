@@ -5,6 +5,7 @@ import getAddress from '../actions/getAddress'
 
 class Search extends Component {
   render(){
+    debugger;
     return (
       <div>
         <h1>Welcome to CityScout NYC</h1>
