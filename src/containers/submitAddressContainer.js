@@ -12,6 +12,7 @@ class SubmitAddressContainer extends Component {
     getAddress(text);
   }
   render(){
+    debugger;
     return (
       <div>
         <h1>Welcome to CityScout NYC</h1>

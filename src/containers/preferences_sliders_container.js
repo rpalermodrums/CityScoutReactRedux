@@ -19,7 +19,6 @@ const SliderContainer = class extends Component {
                             .value, 10))
     }
     event.preventDefault();
-    debugger
     getPreferences(preferences)
   }
   render() {
@@ -43,4 +42,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({getPreferences}, dispatch)
 }
 
-export default connect(mapDispatchToProps)(SliderContainer)
+export default connect(null, mapDispatchToProps)(SliderContainer)
