@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
+import searchReducer from './searchReducer'
 
 // Mapping of state
 const rootReducer = combineReducers({
-  // state: reducer
+  address: searchReducer
   // crimes: CrimesReducer,
   // parks: ParksReducer,
   // schools: SchoolsReducer,
