@@ -23,7 +23,7 @@ const PreferencesSlidersContainer = class extends Component {
     fetchScores(this.props.address.address)
   }
   render() {
-
+    
     return(
       <div>
         <Address text={this.props.address.address}/>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // import ReactDOM from 'react-dom';
-import {VictoryBar, VictoryGroup, range, random} from 'victory';
+import {VictoryBar, VictoryGroup} from 'victory';
 
 export default class VictoryGraph extends Component {
    constructor(props) {
@@ -11,11 +11,9 @@ export default class VictoryGraph extends Component {
   }
 
   getData() {
-    debugger;
-    const num = random(3, 5);
-    return range(4).map((index) => {
-      return range(num).map((i) => {
-        return {x: i, y: random(2, 10)};
+    return [1, 2, 3, 4].map((index) => {
+      return [1, 2, 3, 4].map((i) => {
+        return {x: i, y: Math.random(2, 10)};
       })
     });
   }

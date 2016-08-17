@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import fetchScores from '../actions/fetchScores'
 import TotalScoreBox from '../components/totalScoreBox'
-import ScoreGraph from '../components/scoreGraph'
 import VictoryGraph from '../components/victoryBar'
 
 const ScoresResult = class extends Component {
@@ -13,7 +12,6 @@ const ScoresResult = class extends Component {
     return(
       <div>
         <TotalScoreBox totalScore={totalScore} />
-        <ScoreGraph scores={scores} />
         <VictoryGraph scores={scores} />
       </div>
     )
