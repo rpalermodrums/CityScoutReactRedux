@@ -5,6 +5,7 @@ import fetchScores from '../actions/fetchScores'
 import TotalScoreBox from '../components/totalScoreBox'
 import ScoreGraph from '../components/scoreGraph'
 import radarChart from '../components/radarChart'
+import VictoryGraph from '../components/victoryBar'
 
 
 const ScoresResult = class extends Component {
@@ -14,7 +15,11 @@ const ScoresResult = class extends Component {
     return(
       <div>
         <TotalScoreBox totalScore={totalScore} />
+
         <ScoreGraph scores={scores} radarChart={radarChart} />
+
+        <VictoryGraph scores={scores} />
+
       </div>
     )
   }
