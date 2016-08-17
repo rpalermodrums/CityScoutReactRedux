@@ -1,12 +1,18 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-export default function (props){
-  var keys = Object.keys(props.scores).filter((key) => {return key !== 'coordinates'}) ////////
-  return keys.map((key) => {
-    return (
-      <p>
-        {key + ": " + props.scores[key]}
-      </p>
-    )
-  })
+export default class extends Component {
+  // var keys = Object.keys(props.scores).filter((key) => {return key !== 'coordinates'}) ////////
+
+  componentDidMount() {
+    this.props.makeGraph(document.getElementById('myChart'))
+  }
+
+    render() {
+      debugger
+      return (
+        <div>
+          <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+      )
+    }
 }
