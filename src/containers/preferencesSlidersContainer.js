@@ -20,7 +20,6 @@ const PreferencesSlidersContainer = class extends Component {
       preferences[category] = value
     }
     getPreferences(preferences)
-
     fetchScores(this.props.address.address)
   }
   render() {
@@ -51,7 +50,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return {address: state.address}
+  return {address: state.address, preferences: state.preferences}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreferencesSlidersContainer)
