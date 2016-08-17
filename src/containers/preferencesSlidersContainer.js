@@ -9,7 +9,7 @@ import Slider from '../components/preferenceSlider'
 import fetchScores from '../actions/fetchScores'
 
 const categories = ['Safety', 'Education', 'Transportation', 'Parks', 'Rent'];
-const SliderContainer = class extends Component {
+const PreferencesSlidersContainer = class extends Component {
   handleSubmit(event){
     var preferences = {}
     for (var i = 0; i < 5; i++) {
@@ -42,4 +42,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({getPreferences, fetchScores}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(SliderContainer)
+export default connect(null, mapDispatchToProps)(PreferencesSlidersContainer)
