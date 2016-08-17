@@ -1,6 +1,5 @@
 import React from 'react'
-import {Route, Router, IndexRoute} from 'react-router'
-import App from './App'
+import {Route, Router} from 'react-router'
 import SubmitAddressContainer from './containers/submitAddressContainer'
 import PreferencesSliderContainer from './containers/preferencesSlidersContainer'
 import ScoresResult from './containers/ScoresResult'
