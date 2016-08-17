@@ -2,14 +2,17 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import fetchScores from '../actions/fetchScores'
+import TotalScoreBox from '../components/totalScoreBox'
+import ScoreGraph from '../components/scoreGraph'
 
 const ScoresResult = class extends Component {
   render() {
     var scores = this.props.scores || []
-    var scores_list = scores.map(score, idx)
+    var totalScore = scores.total //////// name may be different
     return(
       <div>
-
+        <TotalScoreBox totalScore={totalScore} />
+        <ScoreGraph scores={scores} />
       </div>
     )
   }

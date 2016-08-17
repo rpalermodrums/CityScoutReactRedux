@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default const TotalScoreBox = (props) => {
+export default function(props){
   return (
     <div>
-      {/* <h2>{props.totalScore}</h2> */}
+      <h2>{props.totalScore}</h2>
     </div>
   )
 }

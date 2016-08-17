@@ -9,7 +9,7 @@ const Routes = (
   <Router>
     <Route path="/" component={SubmitAddressContainer} />
     <Route path="/preferences" component={PreferencesSliderContainer}>
-      <Route path ="results" component={ScoresResult} />
+      <Route path="results" component={ScoresResult} />
     </Route>
   </Router>
 )
