@@ -7,33 +7,41 @@ import {bindActionCreators} from 'redux'
 import getPreferences from '../actions/getPreferences'
 import Slider from '../components/preferenceSlider'
 import fetchScores from '../actions/fetchScores'
+import Address from '../components/address'
 
 const categories = ['Safety', 'Education', 'Transportation', 'Parks', 'Rent'];
 const PreferencesSlidersContainer = class extends Component {
   handleSubmit(event){
+    event.preventDefault()
     var preferences = {}
     for (var i = 0; i < 5; i++) {
       let value = parseInt(event.target.children[i].children[1].children[0].value, 10)
       let category = document.getElementById(`${categories[i]}`).id
       preferences[category] = value
     }
-    event.preventDefault();
     getPreferences(preferences)
-    fetchScores()
+
+    fetchScores(this.props.address.address)
   }
   render() {
+
     return(
-      <form onSubmit={this.handleSubmit}>
-        {categories.map((category, idx) => {
-          return(
-            <div>
-              <label>{category}</label>
-              <Slider key={idx} category={category} id={category}/>
-            </div>
-          )
-        })}
-        <input type="submit" />
-      </form>
+      <div>
+        <Address text={this.props.address.address}/>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          {categories.map((category, idx) => {
+            return(
+              <div>
+                <label>{category}</label>
+                <Slider key={idx} category={category} id={category}/>
+              </div>
+            )
+          })}
+          <input type="submit" />
+        </form>
+
+        {this.props.children}
+      </div>
     )
   }
 };
@@ -42,4 +50,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({getPreferences, fetchScores}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(PreferencesSlidersContainer)
+function mapStateToProps(state) {
+  return {address: state.address}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PreferencesSlidersContainer)

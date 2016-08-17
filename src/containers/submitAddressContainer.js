@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import getAddress from '../actions/getAddress'
-import Address from '../components/address'
+import {browserHistory} from 'react-router'
 
 var text;
 class SubmitAddressContainer extends Component {
@@ -10,7 +10,7 @@ class SubmitAddressContainer extends Component {
     event.preventDefault();
     text = event.target.firstChild.value;
     this.props.getAddress(text);
-    
+    browserHistory.push('/preferences')
   }
 
   render(){
@@ -20,7 +20,6 @@ class SubmitAddressContainer extends Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type='text' placeholder='enter address' />
           <input type='submit' />
-          <Address text={this.props.address}/>
         </form>
       </div>
     )
@@ -29,7 +28,7 @@ class SubmitAddressContainer extends Component {
 
 function mapStateToProps(state){
   return {
-    address: state.address.address
+    address: state.address
   }
 }
 

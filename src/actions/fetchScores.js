@@ -1,14 +1,14 @@
 import Axios from 'axios'
 
-function fetchScores(){
+function fetchScores(address){
 
-  const url = 'http://localhost:3000/scores'
-  const request = Axios.get(url)
-  console.log('request', request)
-
+  const url = `http://localhost:3001/api/v1/voting_districts?full_address=${address}`
+  const response = Axios.get(url)
+  console.log('request', response)
+  debugger
   return {
     type: 'FETCH_SCORES',
-    payload: request
+    payload: response
   }
 }
 export default fetchScores
