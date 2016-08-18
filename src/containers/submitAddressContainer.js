@@ -18,7 +18,6 @@ class SubmitAddressContainer extends Component {
   render(){
     return (
       <div>
-        <h1>Welcome to CityScout NYC</h1>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type='text' placeholder='enter address' />
           <input type='submit' />
