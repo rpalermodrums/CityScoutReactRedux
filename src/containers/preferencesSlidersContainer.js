@@ -1,6 +1,3 @@
-/**
- * Created by Sven on 8/15/16.
- */
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
@@ -24,14 +21,13 @@ const PreferencesSlidersContainer = class extends Component {
     browserHistory.push('/results')
   }
   render() {
-    debugger
     return(
       <div>
         <Address text={this.props.address.address}/>
         <form onSubmit={this.handleSubmit.bind(this)}>
           {categories.map((category, idx) => {
             return(
-              <div>
+              <div id="slider">
                 <label>{category}</label>
                 <Slider key={idx} category={category} id={category}/>
               </div>
