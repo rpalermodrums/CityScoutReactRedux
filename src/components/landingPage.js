@@ -3,9 +3,11 @@ import SubmitAddressContainer from '../containers/submitAddressContainer'
 
 export default function() {
   return(
-    <div id="landing-page">
-      <h1>Welcome to CityScout NYC</h1>
-      <SubmitAddressContainer />
+    <div id="container">
+      <div id="landing-page">
+        <h1>Welcome to CityScout NYC</h1>
+        <SubmitAddressContainer />
+      </div>
     </div>
   )
 }
