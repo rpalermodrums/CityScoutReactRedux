@@ -9,9 +9,17 @@ import VictoryGraph from '../components/victoryBar'
 
 
 const ScoresResult = class extends Component {
-  render() {
+  totalScore(){
     var scores = this.props.scores || [];
-    var totalScore = scores.total; //////// name may be different
+    /* 1. Transportation, recreation, Education, Safety
+        - values will be inverse
+          - Transportation and recreation will be a value of differences in lat/long normalized to 1-100 scale
+          - education will be given a specific score based on it's grade
+          - Safety will be a number of instances
+    */
+  }
+  render() {
+    var totalScore = 'a', scores = 'b'
     return(
       <div>
         <TotalScoreBox totalScore={totalScore} />
@@ -19,7 +27,6 @@ const ScoresResult = class extends Component {
         <ScoreGraph scores={scores} radarChart={radarChart} />
 
         <VictoryGraph scores={scores} />
-
       </div>
     )
   }

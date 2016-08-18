@@ -3,6 +3,7 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import getAddress from '../actions/getAddress'
 import {browserHistory} from 'react-router'
+import fetchScores from '../actions/fetchScores'
 
 var text;
 class SubmitAddressContainer extends Component {
@@ -10,6 +11,7 @@ class SubmitAddressContainer extends Component {
     event.preventDefault();
     text = event.target.firstChild.value;
     this.props.getAddress(text);
+    this.props.fetchScores(text)
     browserHistory.push('/preferences')
   }
 
@@ -28,12 +30,13 @@ class SubmitAddressContainer extends Component {
 
 function mapStateToProps(state){
   return {
-    address: state.address
+    address: state.address,
+    scores: state.scores
   }
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({getAddress}, dispatch)
+  return bindActionCreators({fetchScores, getAddress}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubmitAddressContainer)

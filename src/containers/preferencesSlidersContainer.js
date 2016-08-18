@@ -21,11 +21,10 @@ const PreferencesSlidersContainer = class extends Component {
       preferences[category] = value
     }
     getPreferences(preferences)
-    fetchScores(this.props.address.address)
     browserHistory.push('/results')
   }
   render() {
-    
+    debugger
     return(
       <div>
         <Address text={this.props.address.address}/>
@@ -48,11 +47,11 @@ const PreferencesSlidersContainer = class extends Component {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({getPreferences, fetchScores}, dispatch)
+  return bindActionCreators({getPreferences}, dispatch)
 }
 
 function mapStateToProps(state) {
-  return {address: state.address, preferences: state.preferences}
+  return {address: state.address, preferences: state.preferences, scores: state.scores}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreferencesSlidersContainer)
