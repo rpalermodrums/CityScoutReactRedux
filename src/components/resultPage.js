@@ -4,7 +4,7 @@ import TransitionGroup from 'react-addons-transition-group';
 
 export default function() {
   return(
-    <div className="ink-grid" id="container">
+    <div className="ink-grid">
       <div className="column-group">
         <div id="result-page">
           <ScoresResult />
