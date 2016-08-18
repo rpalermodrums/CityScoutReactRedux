@@ -1,5 +1,6 @@
 import React from 'react';
-import SubmitAddressContainer from '../containers/submitAddressContainer'
+import SubmitAddressContainer from '../containers/submitAddressContainer';
+import TransitionGroup from 'react-addons-transition-group';
 
 export default function() {
   return(

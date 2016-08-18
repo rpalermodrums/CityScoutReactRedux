@@ -10,7 +10,7 @@ export default function radarChart(ctx) {
     data: {
       labels: ["Safety", "Transportation", "Education", "Recreation"],
       datasets: [{
-        label: '# of Votes',
+        label: 'Scores',
         data: [12, 19, 3, 5],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
