@@ -22,7 +22,7 @@ const PreferencesSlidersContainer = class extends Component {
   }
   render() {
     return(
-      <div>
+      <div className="large-33">
         <Address text={this.props.address.address}/>
         <form onSubmit={this.handleSubmit.bind(this)}>
           {categories.map((category, idx) => {
