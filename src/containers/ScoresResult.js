@@ -11,20 +11,18 @@ import barChart from '../components/barChart'
 const ScoresResult = class extends Component {
   totalScore(){
     var scores = this.props.scores || [];
-    /* 1. Transportation, recreation, Education, Safety
-        - values will be inverse
-          - Transportation and recreation will be a value of differences in lat/long normalized to 1-100 scale
-          - education will be given a specific score based on it's grade
-          - Safety will be a number of instances
-    */
   }
   render() {
-    var totalScore = 50, scores = 'b'
+    var keys = Object.keys(scores);
+    var scoreData = keys.map((key) => {
+      return scores[key]
+    });
+
     return(
       <div className="large-66">
         <TotalScoreBox totalScore={totalScore} />
 
-        <ScoreGraph scores={scores} radarChart={radarChart} />
+        <ScoreGraph scores={scores} keys={keys} radarChart={radarChart} scoreData={scoreData}/>
 
         <BarGraph scores={scores} barChart={barChart}/>
       </div>
@@ -34,7 +32,7 @@ const ScoresResult = class extends Component {
 
 function mapStateToProps(state) {
   return {
-    scores: state.scores
+    scores: state.scores.data.scores
   }
 }
 

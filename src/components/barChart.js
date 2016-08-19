@@ -1,7 +1,7 @@
 import Chart from 'chart.js'
 
-export default function barChart(ctx) {
-  new Chart(ctx, {
+export default function barChart(chart) {
+  new Chart(chart, {
 
     type: 'bar',
     data: {
@@ -23,7 +23,7 @@ export default function barChart(ctx) {
             ],
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 70] // y-axis
+            data: Object.keys(scores).forEach(function(key){console.log(scores[key])}) // y-axis
         },
 		{
             label: "NYC Average", //optional

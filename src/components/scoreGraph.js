@@ -5,7 +5,7 @@ export default class extends Component {
 
   // Executes radarChart after element has been rendered by the DOM
   componentDidMount() {
-    this.props.radarChart(document.getElementById('myChart'))
+    this.props.radarChart(document.getElementById('myChart'), this.props.keys, this.props.scoreData)
   }
 
     render() {
