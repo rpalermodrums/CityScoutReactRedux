@@ -18,3 +18,22 @@ h1 {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
+
+.route-enter, .route-appear {
+  animation: slideIn 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+.route-leave {
+  animation: slideOut 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  };
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  };
+}
