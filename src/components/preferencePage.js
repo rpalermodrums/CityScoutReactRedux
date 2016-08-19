@@ -14,7 +14,9 @@ export default function() {
       transitionLeaveTimeout={400}
       transitionAppear={true}>
       <div className="column-group">
-      <div className="slider-title"><h3>Choose your neighborhood categories</h3></div>
+      <div className="slider-title">
+        <h3>Choose your neighborhood categories</h3>
+      </div>
         <div id="preference-bar">
           <PreferencesSliderContainer />
           <div className="">
