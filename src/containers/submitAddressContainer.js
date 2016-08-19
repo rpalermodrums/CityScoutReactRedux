@@ -29,6 +29,7 @@ class SubmitAddressContainer extends Component {
 }
 
 function mapStateToProps(state){
+
   return {
     address: state.address,
     scores: state.scores

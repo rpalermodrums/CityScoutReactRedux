@@ -1,6 +1,6 @@
 import Chart from 'chart.js'
 
-export default function barChart(chart) {
+export default function barChart(chart, keys, scoreData) {
   new Chart(chart, {
 
     type: 'bar',

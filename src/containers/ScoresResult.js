@@ -13,6 +13,8 @@ const ScoresResult = class extends Component {
     var scores = this.props.scores || [];
   }
   render() {
+    var totalScore = 50
+    var scores = this.props.scores
     var keys = Object.keys(scores);
     var scoreData = keys.map((key) => {
       return scores[key]
@@ -24,13 +26,14 @@ const ScoresResult = class extends Component {
 
         <ScoreGraph scores={scores} keys={keys} radarChart={radarChart} scoreData={scoreData}/>
 
-        <BarGraph scores={scores} barChart={barChart}/>
+        <BarGraph keys={keys} scores={scores} barChart={barChart}/>
       </div>
     )
   }
 };
 
 function mapStateToProps(state) {
+  debugger
   return {
     scores: state.scores.data.scores
   }
