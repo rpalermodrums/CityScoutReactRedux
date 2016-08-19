@@ -11,25 +11,25 @@ const PreferencesSlidersContainer = class extends Component {
   handleSubmit(event){
     event.preventDefault()
     var preferences = {}
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 4; i++) {
       let value = parseInt(event.target.children[i].children[1].children[0].value, 10)
       let category = document.getElementById(`${categories[i]}`).id
       preferences[category] = value
     }
-    getPreferences(preferences)
+    this.props.getPreferences(preferences)
     browserHistory.push('/results')
   }
   render() {
     return(
-      <div className="large-33">
+      <div>
         <Address text={this.props.address.address}/>
         <form onSubmit={this.handleSubmit.bind(this)}>
           {categories.map((category, idx) => {
             return(
-              <div id="slider">
-                <label>{category}</label>
-                <Slider key={idx} category={category} id={category}/>
-              </div>
+                <div id="slider">
+                  <label>{category}</label>
+                  <Slider key={idx} category={category} id={category}/>
+                </div>
             )
           })}
           <input type="submit" />
