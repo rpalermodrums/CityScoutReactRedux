@@ -10,19 +10,39 @@ import barChart from '../components/barChart'
 
 const ScoresResult = class extends Component {
   render() {
-    var totalScore = 50
-    var scores = this.props.scores
-    var keys = Object.keys(scores);
-    var scoreData = keys.map((key) => {
-      return scores[key]
+    var dictionary = {
+      "accidents": "Safety",
+      "crime": "Safety",
+      "schools": "Education",
+      "subways": "Transportation",
+      "bikes": "Transportation",
+      "parks": "Parks"
+    }
+    var scores = this.props.scores.scores
+    var preferences = this.props.preferences
+    var labels = Object.keys(scores);
+    var totalWeight = 0
+    var totalScore =0
+    var scoreData = labels.map((key) => {
+      var score = scores[key]
+      var weight = preferences[dictionary[key]]
+      var value = score * weight
+      totalWeight += weight
+      totalScore += value
+      return value
     });
+    scoreData = scoreData.map((score) => {
+      return Math.floor(score / totalWeight)
+    })
+    totalScore = Math.floor(totalScore / totalWeight)
+    debugger
     return(
       <div className="large-66">
         <TotalScoreBox totalScore={totalScore} />
 
-        <ScoreGraph scores={scores} keys={keys} radarChart={radarChart} scoreData={scoreData}/>
+        <ScoreGraph scores={scores} keys={labels} radarChart={radarChart} scoreData={scoreData}/>
 
-        <BarGraph keys={keys} scores={this.props.attributes} averages={this.props.averages} barChart={barChart}/>
+        <BarGraph keys={labels} scores={this.props.scores.attributes} averages={this.props.scores.averages} barChart={barChart}/>
       </div>
     )
   }
@@ -30,9 +50,10 @@ const ScoresResult = class extends Component {
 
 function mapStateToProps(state) {
   return {
-    scores: state.scores.data.scores,
-    averages: state.scores.data.averages,
-    attributes: state.scores.data.attributes
+    scores: state.scores.data,
+    averages: state.scores.data,
+    attributes: state.scores.data,
+    preferences: state.preferences.preferences
 
   }
 }

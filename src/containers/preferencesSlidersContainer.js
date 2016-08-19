@@ -11,12 +11,12 @@ const PreferencesSlidersContainer = class extends Component {
   handleSubmit(event){
     event.preventDefault()
     var preferences = {}
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 4; i++) {
       let value = parseInt(event.target.children[i].children[1].children[0].value, 10)
       let category = document.getElementById(`${categories[i]}`).id
       preferences[category] = value
     }
-    getPreferences(preferences)
+    this.props.getPreferences(preferences)
     browserHistory.push('/results')
   }
   render() {
