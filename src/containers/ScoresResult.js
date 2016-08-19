@@ -19,9 +19,9 @@ const ScoresResult = class extends Component {
     */
   }
   render() {
-    var totalScore = 'a', scores = 'b'
+    var totalScore = 50, scores = 'b'
     return(
-      <div>
+      <div className="large-66">
         <TotalScoreBox totalScore={totalScore} />
 
         <ScoreGraph scores={scores} radarChart={radarChart} />
