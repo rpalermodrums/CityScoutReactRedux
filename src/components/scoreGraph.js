@@ -8,11 +8,11 @@ export default class extends Component {
     this.props.radarChart(document.getElementById('myChart'), this.props.keys, this.props.scoreData)
   }
 
-    render() {
-      return (
-        <div>
-          <canvas id="myChart" width="400" height="400"></canvas>
-        </div>
-      )
-    }
+  render() {
+    return (
+      <div>
+        <canvas id="myChart" width="400" height="400"></canvas>
+      </div>
+    )
+  }
 }

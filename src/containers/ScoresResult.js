@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import fetchScores from '../actions/fetchScores'
+
 import TotalScoreBox from '../components/totalScoreBox'
 import ScoreGraph from '../components/scoreGraph'
 import BarGraph from '../components/barGraph'
@@ -9,17 +9,13 @@ import radarChart from '../components/radarChart'
 import barChart from '../components/barChart'
 
 const ScoresResult = class extends Component {
-  totalScore(){
-    var scores = this.props.scores || [];
-  }
   render() {
     var totalScore = 50
-    var scores = this.props.scores
+    var scores = this.props.scores.data.scores
     var keys = Object.keys(scores);
     var scoreData = keys.map((key) => {
       return scores[key]
     });
-
     return(
       <div className="large-66">
         <TotalScoreBox totalScore={totalScore} />
@@ -33,14 +29,13 @@ const ScoresResult = class extends Component {
 };
 
 function mapStateToProps(state) {
-  debugger
   return {
-    scores: state.scores.data.scores
+    scores: state.scores
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchScores}, dispatch)
-}
+// function mapDispatchToProps(dispatch){
+//   return bindActionCreators({fetchScores}, dispatch)
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScoresResult)
+export default connect(mapStateToProps)(ScoresResult)

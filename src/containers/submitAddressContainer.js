@@ -12,7 +12,6 @@ class SubmitAddressContainer extends Component {
     text = event.target.firstChild.value;
     this.props.getAddress(text);
     this.props.fetchScores(text)
-    debugger;
     browserHistory.push('/preferences')
   }
 
@@ -29,10 +28,8 @@ class SubmitAddressContainer extends Component {
 }
 
 function mapStateToProps(state){
-
   return {
-    address: state.address,
-    scores: state.scores
+    address: state.address
   }
 }
 
