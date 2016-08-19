@@ -4,9 +4,9 @@ import {bindActionCreators} from 'redux'
 import fetchScores from '../actions/fetchScores'
 import TotalScoreBox from '../components/totalScoreBox'
 import ScoreGraph from '../components/scoreGraph'
+import BarGraph from '../components/barGraph'
 import radarChart from '../components/radarChart'
-import VictoryGraph from '../components/victoryBar'
-
+import barChart from '../components/barChart'
 
 const ScoresResult = class extends Component {
   totalScore(){
@@ -26,7 +26,7 @@ const ScoresResult = class extends Component {
 
         <ScoreGraph scores={scores} radarChart={radarChart} />
 
-        <VictoryGraph scores={scores} />
+        <BarGraph scores={scores} barChart={barChart}/>
       </div>
     )
   }

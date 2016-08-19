@@ -1,6 +1,3 @@
-/**
- * Created by Sven on 8/17/16.
- */
 import Chart from 'chart.js'
 
 export default function radarChart(ctx) {
