@@ -5,7 +5,7 @@ export default function barChart(chart) {
 
     type: 'bar',
     data: {
-      labels: ["Safety", "Transportation", "Education", "Recreation"],
+      labels: keys,
       datasets: [
         {
             label: "Neighborhood Average", //optional
@@ -23,7 +23,7 @@ export default function barChart(chart) {
             ],
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
-            data: Object.keys(scores).forEach(function(key){console.log(scores[key])}) // y-axis
+            data: scoreData // y-axis
         },
 		{
             label: "NYC Average", //optional
