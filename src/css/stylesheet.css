@@ -1,5 +1,6 @@
 #root {
-  height: 100vh;
+  height: 100%;
+  width: 100%;
 }
 
 h1 {
@@ -25,6 +26,17 @@ h1 {
 
 .route-leave {
   animation: slideOut 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+.slider-title {
+  margin-top: 3em;
+  text-align: center;
+}
+
+form {
+  width: 50em;
+  margin-top: 3em;
+  margin-left: 21%;
 }
 
 @keyframes slideIn {

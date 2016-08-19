@@ -21,15 +21,15 @@ const PreferencesSlidersContainer = class extends Component {
   }
   render() {
     return(
-      <div className="large-33">
+      <div>
         <Address text={this.props.address.address}/>
         <form onSubmit={this.handleSubmit.bind(this)}>
           {categories.map((category, idx) => {
             return(
-              <div id="slider">
-                <label>{category}</label>
-                <Slider key={idx} category={category} id={category}/>
-              </div>
+                <div id="slider">
+                  <label>{category}</label>
+                  <Slider key={idx} category={category} id={category}/>
+                </div>
             )
           })}
           <input type="submit" />
