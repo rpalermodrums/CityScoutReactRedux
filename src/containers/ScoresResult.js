@@ -11,7 +11,7 @@ import barChart from '../components/barChart'
 const ScoresResult = class extends Component {
   render() {
     var totalScore = 50
-    var scores = this.props.scores.data.scores
+    var scores = this.props.scores
     var keys = Object.keys(scores);
     var scoreData = keys.map((key) => {
       return scores[key]
@@ -22,7 +22,7 @@ const ScoresResult = class extends Component {
 
         <ScoreGraph scores={scores} keys={keys} radarChart={radarChart} scoreData={scoreData}/>
 
-        <BarGraph keys={keys} scores={scores} barChart={barChart}/>
+        <BarGraph keys={keys} scores={this.props.attributes} averages={this.props.averages} barChart={barChart}/>
       </div>
     )
   }
@@ -30,7 +30,10 @@ const ScoresResult = class extends Component {
 
 function mapStateToProps(state) {
   return {
-    scores: state.scores
+    scores: state.scores.data.scores,
+    averages: state.scores.data.averages,
+    attributes: state.scores.data.attributes
+
   }
 }
 

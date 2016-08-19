@@ -1,6 +1,12 @@
 import Chart from 'chart.js'
 
-export default function barChart(chart, keys, scoreData) {
+export default function barChart(chart, keys, averages, scores) {
+  var nyc_avg_vals = keys.map((key) => {
+    return averages[key]
+  })
+  var neigborhood_scores = keys.map((key) => {
+    return scores[key]
+  })
   new Chart(chart, {
 
     type: 'bar',
@@ -8,7 +14,7 @@ export default function barChart(chart, keys, scoreData) {
       labels: keys,
       datasets: [
         {
-            label: "Neighborhood Average", //optional
+            label: "NYC Average", //optional
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -23,15 +29,15 @@ export default function barChart(chart, keys, scoreData) {
             ],
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
-            data: scoreData // y-axis
+            data: nyc_avg_vals // y-axis
         },
 		{
-            label: "NYC Average", //optional
+            label: "Neighborhood Scores", //optional
             fillColor: "rgba(220,120,220,0.8)",
             strokeColor: "rgba(220,120,220,0.8)",
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
-            data: [30, 90, 65, 81]
+            data: neigborhood_scores
         }
     ]
     },
