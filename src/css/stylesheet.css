@@ -100,7 +100,11 @@ form {
 }
 
 #bar {
-  width: 50%;
+  width: 60%;
+}
+
+body {
+  background-color: #ccccff;
 }
 
 /*position: absolute;
