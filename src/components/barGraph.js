@@ -5,7 +5,7 @@ export default class extends Component {
 
   // Executes barChart after element has been rendered by the DOM
   componentDidMount() {
-    this.props.barChart(document.getElementById('barChart'), this.props.keys, this.props.scoreData)
+    this.props.barChart(document.getElementById('barChart'), this.props.keys, this.props.averages, this.props.scores)
   }
 
     render() {
