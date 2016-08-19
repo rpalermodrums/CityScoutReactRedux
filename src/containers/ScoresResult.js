@@ -1,32 +1,28 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import fetchScores from '../actions/fetchScores'
+
 import TotalScoreBox from '../components/totalScoreBox'
 import ScoreGraph from '../components/scoreGraph'
+import BarGraph from '../components/barGraph'
 import radarChart from '../components/radarChart'
-import VictoryGraph from '../components/victoryBar'
-
+import barChart from '../components/barChart'
 
 const ScoresResult = class extends Component {
-  totalScore(){
-    var scores = this.props.scores || [];
-    /* 1. Transportation, recreation, Education, Safety
-        - values will be inverse
-          - Transportation and recreation will be a value of differences in lat/long normalized to 1-100 scale
-          - education will be given a specific score based on it's grade
-          - Safety will be a number of instances
-    */
-  }
   render() {
-    var totalScore = 'a', scores = 'b'
+    var totalScore = 50
+    var scores = this.props.scores
+    var keys = Object.keys(scores);
+    var scoreData = keys.map((key) => {
+      return scores[key]
+    });
     return(
-      <div>
+      <div className="large-66">
         <TotalScoreBox totalScore={totalScore} />
 
-        <ScoreGraph scores={scores} radarChart={radarChart} />
+        <ScoreGraph scores={scores} keys={keys} radarChart={radarChart} scoreData={scoreData}/>
 
-        <VictoryGraph scores={scores} />
+        <BarGraph keys={keys} scores={this.props.attributes} averages={this.props.averages} barChart={barChart}/>
       </div>
     )
   }
@@ -34,12 +30,15 @@ const ScoresResult = class extends Component {
 
 function mapStateToProps(state) {
   return {
-    scores: state.scores
+    scores: state.scores.data.scores,
+    averages: state.scores.data.averages,
+    attributes: state.scores.data.attributes
+
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchScores}, dispatch)
-}
+// function mapDispatchToProps(dispatch){
+//   return bindActionCreators({fetchScores}, dispatch)
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScoresResult)
+export default connect(mapStateToProps)(ScoresResult)

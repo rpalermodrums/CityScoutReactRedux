@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import getPreferences from '../actions/getPreferences'
 import Slider from '../components/preferenceSlider'
-import fetchScores from '../actions/fetchScores'
 import Address from '../components/address'
 import { browserHistory } from 'react-router'
 
@@ -35,8 +34,6 @@ const PreferencesSlidersContainer = class extends Component {
           })}
           <input type="submit" />
         </form>
-
-        {this.props.children}
       </div>
     )
   }
@@ -47,7 +44,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return {address: state.address, preferences: state.preferences, scores: state.scores}
+  return {address: state.address, preferences: state.preferences}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreferencesSlidersContainer)

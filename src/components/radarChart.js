@@ -1,17 +1,14 @@
-/**
- * Created by Sven on 8/17/16.
- */
 import Chart from 'chart.js'
 
-export default function radarChart(ctx) {
+export default function radarChart(ctx, keys, scoreData) {
   new Chart(ctx, {
 
     type: 'radar',
     data: {
-      labels: ["Safety", "Transportation", "Education", "Recreation"],
+      labels: keys,
       datasets: [{
         label: 'Scores',
-        data: [12, 19, 3, 5],
+        data: scoreData,
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
