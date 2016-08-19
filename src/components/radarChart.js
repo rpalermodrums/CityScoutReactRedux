@@ -2,7 +2,6 @@ import Chart from 'chart.js'
 
 export default function radarChart(ctx, keys, scoreData) {
   new Chart(ctx, {
-
     type: 'radar',
     data: {
       labels: keys,
@@ -25,6 +24,11 @@ export default function radarChart(ctx, keys, scoreData) {
       }]
     },
     options: {
+      scale: {
+        ticks: {
+          beginAtZero: true
+        }
+      },
       scales: {
         yAxes: [{
           ticks: {
