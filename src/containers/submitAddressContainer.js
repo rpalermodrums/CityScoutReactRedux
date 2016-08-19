@@ -17,9 +17,9 @@ class SubmitAddressContainer extends Component {
 
   render(){
     return (
-      <div>
+      <div className="search-bar">
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type='text' placeholder='enter address' />
+          <input id="bar" type='text' placeholder='Enter Address' />
           <input type='submit' />
         </form>
       </div>

@@ -3,24 +3,23 @@ import SubmitAddressContainer from '../containers/submitAddressContainer';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 
-export default function({ children, location }) {
+export default function() {
   return(
+    <ReactCSSTransitionGroup
+      component="div"
+      className="search"
+      transitionName="route"
+      transitionEnterTimeout={600}
+      transitionAppearTimeout={600}
+      transitionLeaveTimeout={600}
+      transitionAppear={true}>
       <div className="ink-grid" id="container">
         <div className="column-group">
           <div id="landing-page" className="all-100">
-            <h1>Welcome to CityScout NYC</h1>
             <SubmitAddressContainer />
           </div>
         </div>
-        <ReactCSSTransitionGroup
-          component="div"
-          transitionName="example"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}>
-          {React.cloneElement(children, {
-            key: location.pathname
-          })}
-        </ReactCSSTransitionGroup>
       </div>
-    )
+    </ReactCSSTransitionGroup>
+  )
 }

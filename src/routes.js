@@ -6,7 +6,7 @@ import ResultPage from './components/resultPage'
 
 const Routes = (
   <Router>
-    <IndexRoute component={LandingPage} />
+    <Route path="/" component={LandingPage} />
     <Route path="/preferences" component={PreferencePage} />
     <Route path="/results" component={ResultPage} />
   </Router>

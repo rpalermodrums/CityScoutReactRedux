@@ -1,9 +1,4 @@
 import Axios from 'axios'
-<<<<<<< HEAD
-// import {browserHistory} from 'react'
-=======
-
->>>>>>> a6fc99832d6cb4f579b54b69869fe194799b480c
 
 function fetchScores(address){
 
