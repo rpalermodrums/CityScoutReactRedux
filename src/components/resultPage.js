@@ -1,6 +1,5 @@
 import React from 'react';
 import ScoresResult from '../containers/ScoresResult';
-import TransitionGroup from 'react-addons-transition-group';
 
 export default function() {
   return(

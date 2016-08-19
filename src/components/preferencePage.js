@@ -1,6 +1,5 @@
 import React from 'react';
 import PreferencesSliderContainer from '../containers/preferencesSlidersContainer';
-import TransitionGroup from 'react-addons-transition-group';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default function() {

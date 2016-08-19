@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import {browserHistory} from 'react'
+// import {browserHistory} from 'react'
 
 function fetchScores(address){
 
