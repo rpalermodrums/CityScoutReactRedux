@@ -3,12 +3,21 @@
   width: 100%;
 }
 
+#bar {
+  margin: 0 auto;
+  padding-top: 30%;
+  width: 25vw
+}
+
+#textBar {
+  width: 100%;
+  margin-bottom: 10px
+}
+
 .totalScoreBox {
   text-align: center;
 
 }
-
-
 
 #radarChartBox {
 
@@ -58,6 +67,7 @@ h1 {
 }
 
 form {
+  align-content: center;
   width: 75%;
   margin-top: 3em;
   margin-left: 21%;
@@ -115,11 +125,8 @@ form {
 }
 
 .search-bar {
+  align-content: center;
   padding-top: 460px;
-}
-
-#bar {
-  width: 60%;
 }
 
 body {

@@ -13,11 +13,9 @@ export default function() {
       transitionAppearTimeout={600}
       transitionLeaveTimeout={600}
       transitionAppear={true}>
-      <div className="ink-grid" id="container">
-        <div className="column-group">
-          <div id="landing-page" className="all-100">
-            <SubmitAddressContainer />
-          </div>
+      <div className="container-fluid" id="container">>
+          <div id="landing-page">
+          <SubmitAddressContainer />
         </div>
       </div>
     </ReactCSSTransitionGroup>

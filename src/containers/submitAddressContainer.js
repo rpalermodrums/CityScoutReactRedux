@@ -16,12 +16,10 @@ class SubmitAddressContainer extends Component {
 
   render(){
     return (
-      <div className="search-bar">
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input id="bar" type='text' placeholder='Enter Address' />
+        <form id="bar" onSubmit={this.handleSubmit.bind(this)}>
+          <input id="textBar" type='text' placeholder='Enter Address' />
           <input type='submit' />
         </form>
-      </div>
     )
   }
 }
