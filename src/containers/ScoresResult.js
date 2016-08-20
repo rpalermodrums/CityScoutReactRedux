@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-
+import PreferencesSlidersContainer from '../containers/preferencesSlidersContainer'
 import TotalScoreBox from '../components/totalScoreBox'
 import ScoreGraph from '../components/scoreGraph'
 import BarGraph from '../components/barGraph'
@@ -35,14 +35,22 @@ const ScoresResult = class extends Component {
       return Math.floor(score / totalWeight)
     })
     totalScore = Math.floor(totalScore / totalWeight)
-    debugger
     return(
-      <div className="large-66">
-        <TotalScoreBox totalScore={totalScore} />
+      <div className="container-fluid">
 
-        <ScoreGraph scores={scores} keys={labels} radarChart={radarChart} scoreData={scoreData}/>
+        <div className="row" id="chartsBox">
+          <TotalScoreBox className="col-md-12" totalScore={totalScore} />
+          <div className='col-md-4'>
+            <PreferencesSlidersContainer />
+          </div>
+          <div className="col-md-4" id="radarChartBox">
+            <ScoreGraph scores={scores} keys={labels} radarChart={radarChart} scoreData={scoreData}/>
+          </div>
 
-        <BarGraph keys={labels} scores={this.props.scores.attributes} averages={this.props.scores.averages} barChart={barChart}/>
+          <div className="col-md-4" id="barChartBox">
+            <BarGraph keys={labels} scores={this.props.scores.attributes} averages={this.props.scores.averages} barChart={barChart}/>
+          </div>
+        </div>
       </div>
     )
   }

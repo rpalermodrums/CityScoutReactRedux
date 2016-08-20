@@ -3,6 +3,25 @@
   width: 100%;
 }
 
+.totalScoreBox {
+  text-align: center;
+
+}
+
+
+
+#radarChartBox {
+
+  padding: 0 auto;
+
+}
+
+#barChartBox {
+
+  padding: 0 auto;
+
+}
+
 h1 {
   margin-top: 0;
 }
@@ -39,7 +58,7 @@ h1 {
 }
 
 form {
-  width: 50em;
+  width: 75%;
   margin-top: 3em;
   margin-left: 21%;
 }

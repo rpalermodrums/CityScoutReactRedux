@@ -11,7 +11,6 @@ class SubmitAddressContainer extends Component {
     event.preventDefault();
     text = event.target.firstChild.value;
     this.props.getAddress(text);
-    this.props.fetchScores(text)
     browserHistory.push('/preferences')
   }
 
