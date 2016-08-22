@@ -10,19 +10,28 @@ import fetchScores from '../actions/fetchScores'
 const categories = ['Safety', 'Education', 'Transportation', 'Parks', 'Rent'];
 const PreferencesSlidersContainer = class extends Component {
   handleSubmit(event){
+
     event.preventDefault()
     var preferences = {}
     for (var i = 0; i < 4; i++) {
+
       let value = parseInt(event.target.children[i].children[1].children[0].value, 10)
       let category = document.getElementById(`${categories[i]}`).id
       preferences[category] = value
     }
     this.props.getPreferences(preferences)
+
     browserHistory.push('/results')
   }
   componentWillMount(){
-
     this.props.fetchScores(this.props.address)
+  }
+
+  componentWillReceiveProps(nextProps){
+
+    if (Object.keys(nextProps.scores.data).length !== 0) {
+      document.getElementById("submitForm").disabled = false
+    }
   }
   render() {
     return(
@@ -37,7 +46,7 @@ const PreferencesSlidersContainer = class extends Component {
                 </div>
             )
           })}
-          <input type="submit" />
+          <input id="submitForm" type="submit" disabled="true"/>
         </form>
       </div>
     )
