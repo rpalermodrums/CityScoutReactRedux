@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
 import PreferencesSlidersContainer from '../containers/preferencesSlidersContainer'
 import TotalScoreBox from '../components/totalScoreBox'
 import ScoreGraph from '../components/scoreGraph'
@@ -18,7 +17,7 @@ const ScoresResult = class extends Component {
       "bikes": "Transportation",
       "parks": "Parks"
     }
-    var scores = this.props.scores.scores
+    var scores = this.props.scores.own_score
     var preferences = this.props.preferences
     var labels = Object.keys(scores);
     var totalWeight = 0

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, Router, IndexRoute} from 'react-router'
+import {Route, Router} from 'react-router'
 import LandingPage from './components/landingPage'
 import PreferencePage from './components/preferencePage'
 import ResultPage from './components/resultPage'

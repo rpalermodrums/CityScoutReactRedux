@@ -24,6 +24,7 @@ export default function radarChart(ctx, keys, scoreData) {
       }]
     },
     options: {
+
       scale: {
         ticks: {
           beginAtZero: true
@@ -31,6 +32,7 @@ export default function radarChart(ctx, keys, scoreData) {
       },
       scales: {
         yAxes: [{
+          display: false,
           ticks: {
             beginAtZero:true
           }
