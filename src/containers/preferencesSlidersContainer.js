@@ -30,7 +30,7 @@ const PreferencesSlidersContainer = class extends Component {
   componentWillReceiveProps(nextProps){
 
     if (Object.keys(nextProps.scores.data).length !== 0) {
-      document.getElementById("submitForm").disabled = false
+      document.getElementById("submitForm").hidden = false
     }
   }
   render() {
@@ -46,7 +46,7 @@ const PreferencesSlidersContainer = class extends Component {
                 </div>
             )
           })}
-          <input id="submitForm" type="submit" disabled="true"/>
+          <input id="submitForm" type="submit" hidden="true"/>
         </form>
       </div>
     )

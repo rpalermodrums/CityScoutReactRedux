@@ -25,6 +25,9 @@ const ScoresResult = class extends Component {
     var scoreData = labels.map((key) => {
       var score = scores[key]
       var weight = preferences[dictionary[key]]
+      if (weight === 0) {
+        weight = 1
+      }
       var value = score * weight
       totalWeight += weight
       totalScore += value

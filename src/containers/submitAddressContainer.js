@@ -14,6 +14,7 @@ class SubmitAddressContainer extends Component {
     browserHistory.push('/preferences')
   }
 
+
   render(){
     return (
         <form id="bar" onSubmit={this.handleSubmit.bind(this)}>
