@@ -5,19 +5,14 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default function() {
   return(
-    <ReactCSSTransitionGroup
-      component="div"
-      className="search"
-      transitionName="route"
-      transitionEnterTimeout={600}
-      transitionAppearTimeout={600}
-      transitionLeaveTimeout={600}
-      transitionAppear={true}>
-      <div className="container-fluid" id="container">>
-          <div id="landing-page">
+      <div className="" id="landing-page">
+        <div id="landing-page">
+          <h1 id="title">CityScout</h1>
           <SubmitAddressContainer />
         </div>
+        <video autoPlay muted loop poster="" id="bgvid">
+          <source src="src/video/landing.mp4" type="video/mp4"></source>
+        </video>
       </div>
-    </ReactCSSTransitionGroup>
   )
 }

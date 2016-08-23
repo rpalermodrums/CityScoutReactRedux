@@ -16,10 +16,13 @@ class SubmitAddressContainer extends Component {
 
   render(){
     return (
-        <form id="bar" onSubmit={this.handleSubmit.bind(this)}>
-          <input id="textBar" type='text' placeholder='Enter Address' />
-          <input type='submit' />
-        </form>
+        <div>
+          <form id="bar" onSubmit={this.handleSubmit.bind(this)}>
+            <script src='http://use.edgefonts.net/amaranth.js'></script>
+            <input className="button text" id="textBar" type='text' placeholder='Enter Address' />
+            {/* <input type='submit' /> */}
+          </form>
+        </div>
     )
   }
 }
