@@ -1,8 +1,14 @@
 import React, {Component} from 'react'
+import getPreferences from '../actions/getPreferences'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-export default class extends Component {
+
+class ScoreGraph extends Component {
   // var keys = Object.keys(props.scores).filter((key) => {return key !== 'coordinates'}) ////////
-
+  componentWillReceiveProps(nextProps){
+    nextProps.radarChart(document.getElementById('myChart'), nextProps.keys, nextProps.scoreData)
+  }
   // Executes radarChart after element has been rendered by the DOM
   componentDidMount() {
     this.props.radarChart(document.getElementById('myChart'), this.props.keys, this.props.scoreData)
@@ -16,3 +22,9 @@ export default class extends Component {
     )
   }
 }
+
+function mapDispatchToProps(dispatch){
+  bindActionCreators({getPreferences}, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(ScoreGraph)

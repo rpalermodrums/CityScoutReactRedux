@@ -1,9 +1,12 @@
 import Chart from 'chart.js'
 
+
 export default function radarChart(ctx, keys, scoreData) {
   new Chart(ctx, {
     type: 'radar',
+
     data: {
+      responsive: true,
       labels: keys,
       datasets: [{
         label: 'Scores',

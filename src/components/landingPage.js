@@ -13,7 +13,7 @@ export default function() {
       transitionAppearTimeout={600}
       transitionLeaveTimeout={600}
       transitionAppear={true}>
-      <div className="container-fluid" id="container">>
+      <div className="container-fluid" id="container">
           <div id="landing-page">
           <SubmitAddressContainer />
         </div>
