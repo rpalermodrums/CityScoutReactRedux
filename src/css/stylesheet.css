@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'yorkwhiteletterregular';
+    src: url('yorkwhiteletter-webfont.woff2') format('woff2'),
+         url('yorkwhiteletter-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 #root {
   height: 100vh;
   width: 100%;
@@ -5,8 +13,8 @@
 
 #bar {
   margin: 0 auto;
-  padding-top: 30%;
-  width: 25vw
+  padding-top: 20px;
+  width: 30%;
 }
 
 #textBar {
@@ -28,11 +36,21 @@
 
 h1 {
   margin-top: 0;
+  font-family: 'yorkwhiteletterregular', sans-serif;
+}
+
+#title {
+  font-size: 15em;
+  font-family: 'yorkwhiteletterregular', sans-serif;
+  color: rgb(237, 237, 237);
+  text-shadow: 4px 4px 2px rgba(43, 43, 43, 1);
 }
 
 #landing-page {
   align-content: center;
   text-align: center;
+  padding-top: 6%;
+  overflow: visible;
 }
 
 .slider-title {
@@ -136,9 +154,20 @@ body {
   background-color: #ccccff;
 }
 
-/*position: absolute;
-background-color: #EEE;
-left: 0;
-width: 100%;
-height: 100%;
-transform: translate3d(100%, 0, 0);*/
+
+video#bgvid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 125%;
+    min-height: 125%;
+    width: auto;
+    height: 100vh;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    /*background: url(polina.jpg) no-repeat;*/
+    background-size: contain;
+}
