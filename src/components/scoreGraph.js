@@ -7,7 +7,14 @@ import {bindActionCreators} from 'redux'
 class ScoreGraph extends Component {
   // var keys = Object.keys(props.scores).filter((key) => {return key !== 'coordinates'}) ////////
   componentWillReceiveProps(nextProps){
-    nextProps.radarChart(document.getElementById('myChart'), nextProps.keys, nextProps.scoreData)
+    var loaded = false
+    for (let i = 0; i < nextProps.scoreData.length; i++){
+      loaded = this.props.scoreData[i] === nextProps.scoreData[i] ? true : false
+      if (!loaded){break;}
+    }
+    if (!loaded){
+      nextProps.radarChart(document.getElementById('myChart'), nextProps.keys, nextProps.scoreData)
+    }
   }
   // Executes radarChart after element has been rendered by the DOM
   componentDidMount() {

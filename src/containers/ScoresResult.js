@@ -24,7 +24,7 @@ const ScoresResult = class extends Component {
     }
     this.props.getPreferences(preferences)
 
-    browserHistory.push('/results')
+
   }
 
   render() {

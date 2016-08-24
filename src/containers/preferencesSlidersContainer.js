@@ -14,12 +14,12 @@ const PreferencesSlidersContainer = class extends Component {
     this.props.fetchScores(this.props.address)
   }
 
-  componentWillReceiveProps(nextProps){
-
-    if (Object.keys(nextProps.scores.data).length !== 0) {
-      document.getElementById("submitForm").hidden = false
-    }
-  }
+  // componentWillReceiveProps(nextProps){
+  //
+  //   if (Object.keys(nextProps.scores.data).length !== 0) {
+  //     document.getElementById("submitForm").hidden = false
+  //   }
+  // }
   render() {
     return(
       <div>
@@ -33,7 +33,7 @@ const PreferencesSlidersContainer = class extends Component {
                 </div>
             )
           })}
-          <input id="submitForm" type="submit" hidden="true"/>
+          <input id="submitForm" type="submit" />
         </form>
       </div>
     )
