@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import PreferencesSlidersContainer from '../containers/preferencesSlidersContainer'
 import TotalScoreBox from '../components/totalScoreBox'
+import SubmitAddressContainer from '../containers/submitAddressContainer'
 import ScoreGraph from '../components/scoreGraph'
 import BarGraph from '../components/barGraph'
 import radarChart from '../components/radarChart'
@@ -23,8 +24,6 @@ const ScoresResult = class extends Component {
       preferences[category] = value
     }
     this.props.getPreferences(preferences)
-
-
   }
 
   render() {
@@ -58,9 +57,9 @@ const ScoresResult = class extends Component {
     totalScore = Math.floor(totalScore / totalWeight)
     return(
       <div className="container-fluid">
-
+        <TotalScoreBox totalScore={totalScore}/>
+        <SubmitAddressContainer id="result-bar" route='/results'/>
         <div className="row" id="chartsBox">
-          <TotalScoreBox className="col-md-12" totalScore={totalScore} />
           <div className='col-md-4'>
           <PreferencesSlidersContainer handleSubmit={this.handleSubmit.bind(this)} />
           </div>

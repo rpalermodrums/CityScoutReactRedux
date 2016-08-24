@@ -1,6 +1,6 @@
 import React from 'react';
 import ScoresResult from '../containers/ScoresResult';
-import SubmitAddressContainer from '../containers/submitAddressContainer'
+import '../css/resultPage.css';
 
 export default function() {
   return(
@@ -8,7 +8,6 @@ export default function() {
       <div className="column-group">
         <div id="result-page">
           <ScoresResult />
-          <SubmitAddressContainer />
         </div>
       </div>
     </div>
