@@ -1,5 +1,6 @@
 import React from 'react';
 import ScoresResult from '../containers/ScoresResult';
+import '../css/resultPage.css';
 
 export default function() {
   return(

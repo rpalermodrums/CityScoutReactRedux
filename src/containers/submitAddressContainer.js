@@ -12,9 +12,8 @@ class SubmitAddressContainer extends Component {
 
     text = event.target.children[1].value;
     this.props.getAddress(text);
-    browserHistory.push('/preferences')
+    browserHistory.push(this.props.route)
   }
-
 
   render(){
     return (
