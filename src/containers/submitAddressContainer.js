@@ -9,10 +9,12 @@ var text;
 class SubmitAddressContainer extends Component {
   handleSubmit(event) {
     event.preventDefault();
-    text = event.target.firstChild.value;
+
+    text = event.target.children[1].value;
     this.props.getAddress(text);
     browserHistory.push('/preferences')
   }
+
 
   render(){
     return (

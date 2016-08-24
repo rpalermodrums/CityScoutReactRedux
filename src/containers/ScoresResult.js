@@ -6,8 +6,27 @@ import ScoreGraph from '../components/scoreGraph'
 import BarGraph from '../components/barGraph'
 import radarChart from '../components/radarChart'
 import barChart from '../components/barChart'
+import getPreferences from '../actions/getPreferences'
+import {browserHistory} from 'react-router'
+import {bindActionCreators} from 'redux'
 
 const ScoresResult = class extends Component {
+  handleSubmit(event){
+    const categories = ['Safety', 'Education', 'Transportation', 'Parks', 'Rent'];
+
+    event.preventDefault()
+    var preferences = {}
+    for (var i = 0; i < 4; i++) {
+
+      let value = parseInt(event.target.children[i].children[1].children[0].value, 10)
+      let category = document.getElementById(`${categories[i]}`).id
+      preferences[category] = value
+    }
+    this.props.getPreferences(preferences)
+
+
+  }
+
   render() {
     var dictionary = {
       "accidents": "Safety",
@@ -25,6 +44,9 @@ const ScoresResult = class extends Component {
     var scoreData = labels.map((key) => {
       var score = scores[key]
       var weight = preferences[dictionary[key]]
+      if (weight === 0) {
+        weight = 1
+      }
       var value = score * weight
       totalWeight += weight
       totalScore += value
@@ -40,10 +62,10 @@ const ScoresResult = class extends Component {
         <div className="row" id="chartsBox">
           <TotalScoreBox className="col-md-12" totalScore={totalScore} />
           <div className='col-md-4'>
-            <PreferencesSlidersContainer />
+          <PreferencesSlidersContainer handleSubmit={this.handleSubmit.bind(this)} />
           </div>
           <div className="col-md-4" id="radarChartBox">
-            <ScoreGraph scores={scores} keys={labels} radarChart={radarChart} scoreData={scoreData}/>
+            <ScoreGraph scores={scores} keys={labels} radarChart={radarChart} scoreData={scoreData} />
           </div>
 
           <div className="col-md-4" id="barChartBox">
@@ -65,8 +87,8 @@ function mapStateToProps(state) {
   }
 }
 
-// function mapDispatchToProps(dispatch){
-//   return bindActionCreators({fetchScores}, dispatch)
-// }
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({getPreferences}, dispatch)
+}
 
-export default connect(mapStateToProps)(ScoresResult)
+export default connect(mapStateToProps, mapDispatchToProps)(ScoresResult)

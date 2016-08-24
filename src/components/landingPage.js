@@ -1,10 +1,12 @@
 import React from 'react';
 import SubmitAddressContainer from '../containers/submitAddressContainer';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+
 
 
 export default function() {
   return(
+
+
       <div className="" id="landing-page">
         <div id="landing-page">
           <h1 id="title">CityScout</h1>
