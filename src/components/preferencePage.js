@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import getPreferences from '../actions/getPreferences'
 import fetchScores from '../actions/fetchScores'
+import Map from './map'
 
 class PreferencePage extends Component{
   handleSubmit(event){
@@ -42,7 +43,7 @@ class PreferencePage extends Component{
                 <div className="col-md-4">
                 </div>
                 <div className="col-md-4" ref="map">
-                  <Map address={this.props.address} initialPosition={{lat: 0, long: 0}}/>
+                  <Map address={this.props.address} coords={this.props.coords} />
                 </div>
               </div>
           </ReactCSSTransitionGroup>
@@ -57,7 +58,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 
-  return {address: state.address.address, preferences: state.preferences, scores: state.scores}
+  return {address: state.address.address, preferences: state.preferences, scores: state.scores, coords: state.coords}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreferencePage)
