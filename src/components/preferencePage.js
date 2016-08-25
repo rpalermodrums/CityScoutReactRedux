@@ -23,6 +23,7 @@ class PreferencePage extends Component{
     browserHistory.push('/results')
   }
   render(){
+    debugger
     return(
       <div className="container">
           <ReactCSSTransitionGroup
@@ -44,6 +45,7 @@ class PreferencePage extends Component{
                 </div>
                 <div className="col-md-4" ref="map">
                   <Map address={this.props.address} coords={this.props.coords} />
+                  {/* address={this.props.address} coords={this.props.coords} */}
                 </div>
               </div>
           </ReactCSSTransitionGroup>
