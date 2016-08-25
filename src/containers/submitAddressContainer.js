@@ -3,14 +3,18 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import getAddress from '../actions/getAddress'
 import {browserHistory} from 'react-router'
-// import fetchScores from '../actions/fetchScores'
+import fetchScores from '../actions/fetchScores'
 import getLocation from '../actions/getLocation'
 import GeoSuggest from 'react-geosuggest'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 var text;
 class SubmitAddressContainer extends Component {
+  constructor(props) {
+  super(props)
+}
   handleSubmit(event) {
+    console.log(this.props) // Just to check
     event.preventDefault();
     text = event.target.firstChild.value;
     this.props.getAddress(text);
@@ -39,12 +43,12 @@ class SubmitAddressContainer extends Component {
 function mapStateToProps(state){
   return {
     address: state.address,
-    coords: state.geo.coords
+    coords: state.coords
   }
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({getAddress, getLocation}, dispatch)
+  return bindActionCreators({fetchScores, getAddress, getLocation}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubmitAddressContainer)
