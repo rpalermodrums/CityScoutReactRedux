@@ -3,6 +3,7 @@ import Chart from 'chart.js'
 export default function radarChart(ctx, keys, scoreData) {
   new Chart(ctx, {
     type: 'radar',
+
     data: {
       labels: keys,
       datasets: [{
@@ -24,9 +25,9 @@ export default function radarChart(ctx, keys, scoreData) {
       }]
     },
     options: {
-
       scale: {
         ticks: {
+          display: false,
           beginAtZero: true
         }
       },
