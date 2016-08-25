@@ -8,7 +8,6 @@ import BarGraph from '../components/barGraph'
 import radarChart from '../components/radarChart'
 import barChart from '../components/barChart'
 import getPreferences from '../actions/getPreferences'
-import {browserHistory} from 'react-router'
 import {bindActionCreators} from 'redux'
 
 const ScoresResult = class extends Component {
