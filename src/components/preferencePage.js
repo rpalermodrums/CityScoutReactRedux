@@ -37,12 +37,10 @@ class PreferencePage extends Component{
                 <h3>Choose your neighborhood categories</h3>
               </div>
               <div className="row">
-                <div className="preference-bar col-md-4">
+                <div className="preference-bar col-md-6">
                   <PreferencesSliderContainer handleSubmit={this.handleSubmit.bind(this)} />
                 </div>
-                <div className="col-md-4">
-                </div>
-                <div className="col-md-4" ref="map">
+                <div className="col-md-6" ref="map">
                   <Map address={this.props.address} coords={this.props.coords} />
                   {/* address={this.props.address} coords={this.props.coords} */}
                 </div>
