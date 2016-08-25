@@ -22,7 +22,6 @@ class SubmitAddressContainer extends Component {
   //   this.props.getLocation(this.location);
   //   browserHistory.push(this.props.route)
   // }
-
   render(){
     return (
       <ReactCSSTransitionGroup

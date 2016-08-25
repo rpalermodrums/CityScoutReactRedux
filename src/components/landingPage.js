@@ -7,6 +7,7 @@ import {bindActionCreators} from 'redux'
 import getAddress from '../actions/getAddress'
 import getLocation from '../actions/getLocation'
 
+
 var text
 
 class LandingPage extends Component{
@@ -24,21 +25,18 @@ class LandingPage extends Component{
   render(){
     Object.keys(sessionStorage).forEach((key) => sessionStorage.removeItem(key))
     return(
-        <div className="" id="landing-page">
-          <div id="landing-page">
+      <div className="" id="landing-page">
+        <div id="landing-page">
           <ReactCSSTransitionGroup
             transitionName="logo"
             transitionEnterTimeout={1000}
             transitionLeaveTimeout={1000}
             transitionAppear={true}>
-              <h1 id="title">CityScout</h1>
-            </ReactCSSTransitionGroup>
-            <SubmitAddressContainer handleSubmit={this.handleSubmit.bind(this)} route={'/preferences'} />
-          </div>
-          <video autoPlay muted loop poster="" id="bgvid">
-            <source src="src/video/landing.mp4" type="video/mp4"></source>
-          </video>
+          <h1 id="title">cityScout</h1>
+          </ReactCSSTransitionGroup>
+          <SubmitAddressContainer handleSubmit={this.handleSubmit.bind(this)} />
         </div>
+      </div>
     )
   }
 }

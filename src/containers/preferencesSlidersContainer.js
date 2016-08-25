@@ -24,8 +24,8 @@ const PreferencesSlidersContainer = class extends Component {
   }
   render() {
     return(
-      <div>
-        <Address text={sessionStorage.address}/>
+      <div className="slider-pref">
+        <Address text={this.props.address}/>
         <form onSubmit={this.props.handleSubmit.bind(this)}>
           {categories.map((category, idx) => {
             return(

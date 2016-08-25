@@ -48,6 +48,7 @@ const ScoresResult = class extends Component {
       "bikes": "Transportation",
       "parks": "Parks"
     }
+
     var scores = {}
     var averages = {}
     var preferences = {}
