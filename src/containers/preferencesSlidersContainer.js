@@ -4,23 +4,19 @@ import {bindActionCreators} from 'redux'
 import getPreferences from '../actions/getPreferences'
 import Slider from '../components/preferenceSlider'
 import Address from '../components/address'
-
 import fetchScores from '../actions/fetchScores'
 
 const categories = ['Safety', 'Education', 'Transportation', 'Parks'];
 const attributes = ["accidents", "crime", "schools", "subways", "bikes", "parks"]
 const PreferencesSlidersContainer = class extends Component {
-
   componentWillMount(){
     this.props.fetchScores(sessionStorage.address)
-
   }
-
   componentWillReceiveProps(nextProps){
     var scores = nextProps.scores.data
     attributes.map((key) => {
       let keys = Object.keys(scores)
-      keys.filter((k) => {return k != 'boro' && k != 'neighborhood'}).map((k) => {
+      return keys.filter((k) => {return k !== 'boro' && k !== 'neighborhood'}).forEach((k) => {
         sessionStorage[k + " " + key] = scores[k][key]
       })
     })

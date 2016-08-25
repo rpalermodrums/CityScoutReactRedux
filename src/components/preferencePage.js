@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import getPreferences from '../actions/getPreferences'
 import fetchScores from '../actions/fetchScores'
+import Map from './map'
 
 class PreferencePage extends Component{
   handleSubmit(event){
@@ -38,14 +39,17 @@ class PreferencePage extends Component{
             transitionAppearTimeout={600}
             transitionLeaveTimeout={400}
             transitionAppear={true}>
-              <div className="slider-title col-md-12">
+              <div className="slider-title">
                 <h3>Choose your neighborhood categories</h3>
               </div>
-              <div className="preference-bar">
-                <PreferencesSliderContainer handleSubmit={this.handleSubmit.bind(this)} handleClick={this.handleClick.bind(this)} />
-                <div className="">
+              <div className="row">
+                <div className="preference-bar col-md-6">
+                  <PreferencesSliderContainer handleSubmit={this.handleSubmit.bind(this)}
+                  handleClick={this.handleClick.bind(this)} />
                 </div>
-                <div className="">
+                <div className="col-md-6" ref="map">
+                  <Map address={this.props.address} coords={this.props.coords} />
+                  {/* address={this.props.address} coords={this.props.coords} */}
                 </div>
               </div>
           </ReactCSSTransitionGroup>
@@ -60,7 +64,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 
-  return {address: state.address.address, preferences: state.preferences, scores: state.scores}
+  return {address: state.address.address, preferences: state.preferences, scores: state.scores, coords: state.coords}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreferencePage)
