@@ -12,8 +12,9 @@ var text;
 class SubmitAddressContainer extends Component {
   handleSubmit(event) {
     console.log(this.props) // Just to check
-    event.preventDefault();
-    text = event.target.firstChild.value;
+    debugger
+    // event.preventDefault(); // Wouldn't work with preventDefault somehow
+    text = event.label; // Based on object result
     this.props.getAddress(text);
     this.props.getLocation(this.location);
     browserHistory.push('preferences')
@@ -31,7 +32,7 @@ class SubmitAddressContainer extends Component {
             style={{'suggests': {'listStyleType': 'none'}, 'suggestItem': {'color':'white', 'cursor': 'pointer'}}}
             className="button text"
             id="textBar"
-            onSubmit={this.handleSubmit.bind(this)}/>
+            onSuggestSelect={this.handleSubmit.bind(this)}/>
       </ReactCSSTransitionGroup>
     )
   }
