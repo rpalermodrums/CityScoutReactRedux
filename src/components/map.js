@@ -3,30 +3,32 @@ import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps'
 
 export default class Map extends Component {
   render() {
-    <GoogleMapLoader
-      containerElement={
-        <div
-          // {...this.props}
-          style={{
-            height: `100%`,
-          }}
-        />
-    }
-    googleMapElement={
-      <GoogleMap
-        ref={(map) => console.log(map)}
-        defaultZoom={16}
-        defaultCenter={{ lat: this.props.coords.lat, long: this.props.coords.long }}
-        // onClick={this.handleMapClick}
-      >
-        {this.state.markers.map((marker, index) => {
-          return (
+    debugger
+    return(
+      <section style={{display: "flex"}}>
+        <GoogleMapLoader
+          containerElement={
+            <div
+              // {...this.props}
+              style={{
+                height: `100%`,
+              }}
+            />
+          }
+          googleMapElement={
+            <GoogleMap
+              ref={(map) => console.log(map)}
+              defaultZoom={16}
+
+              defaultCenter={{ lat: this.props.coords.lat, long: this.props.coords.lng }}
+              // onClick={this.handleMapClick}
+            >
             <Marker/>
-          );
-        })}
-      </GoogleMap>
-    }
-  />
+          </GoogleMap>
+          }
+        />
+      </section>
+    )
   }
 }
 
