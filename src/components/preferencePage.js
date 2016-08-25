@@ -40,7 +40,6 @@ class PreferencePage extends Component{
                   <PreferencesSliderContainer handleSubmit={this.handleSubmit.bind(this)} />
                 </div>
                 <div className="col-md-4">
-
                 </div>
                 <div className="col-md-4" ref="map">
                   <Map address={this.props.address} initialPosition={{lat: 0, long: 0}}/>
