@@ -3,7 +3,9 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import getAddress from '../actions/getAddress'
 import {browserHistory} from 'react-router'
-import fetchScores from '../actions/fetchScores'
+// import fetchScores from '../actions/fetchScores'
+import getLocation from '../actions/getLocation'
+import GeoSuggest from 'react-geosuggest'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 var text;
@@ -12,6 +14,7 @@ class SubmitAddressContainer extends Component {
     event.preventDefault();
     text = event.target.firstChild.value;
     this.props.getAddress(text);
+    this.props.getLocation(this.location);
     browserHistory.push('preferences')
   }
 
@@ -22,11 +25,12 @@ class SubmitAddressContainer extends Component {
         transitionName="landing"
         transitionEnterTimeout={600}
         transitionLeaveTimeout={600}
-        transitionAppear={true}>
-            <form id="bar" onSubmit={this.handleSubmit.bind(this)}>
-              <input className="button text" id="textBar" type='text' placeholder='Enter Address' />
-              {/* <input type='submit' /> */}
-            </form>
+        transitionAppear={false}>
+          <GeoSuggest
+            style={{'suggests': {'listStyleType': 'none'}, 'suggestItem': {'color':'white', 'cursor': 'pointer'}}}
+            className="button text"
+            id="textBar"
+            onSubmit={this.handleSubmit.bind(this)}/>
       </ReactCSSTransitionGroup>
     )
   }
@@ -34,12 +38,13 @@ class SubmitAddressContainer extends Component {
 
 function mapStateToProps(state){
   return {
-    address: state.address
+    address: state.address,
+    coords: state.geo.coords
   }
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({fetchScores, getAddress}, dispatch)
+  return bindActionCreators({getAddress, getLocation}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubmitAddressContainer)
