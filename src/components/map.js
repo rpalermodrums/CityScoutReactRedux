@@ -23,7 +23,10 @@ export default class Map extends Component {
               defaultCenter={{ lat: this.props.coords.coords.lat, lng: this.props.coords.coords.lng }}
               // onClick={this.handleMapClick}
             >
-            <Marker />
+            <Marker
+                position={{ lat: this.props.coords.coords.lat , lng: this.props.coords.coords.lng }}
+                key='marker'
+                icon='http://maps.google.com/mapfiles/ms/icons/blue.png'/>
           </GoogleMap>
           }
         />
