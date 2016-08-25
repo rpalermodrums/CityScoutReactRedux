@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="./src/css/main.css" />
+		
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCw6aDG4XanzNqS_3FX_I8mCwPoKe817HE&libraries=places" async defer></script>
     <!-- <link rel="stylesheet" type="text/css" href="http://fastly.ink.sapo.pt/3.1.10/css/ink.css"> -->
     <title>React App</title>
@@ -17,22 +18,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	</head>
 	<body class="landing">
+
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="index.html">CityScout</a></h1>
 					<nav id="nav">
-						<ul>
+						<!-- <ul>
 							<li><a href="index.html" class="button special">Home</a></li>
-						</ul>
+						</ul> -->
 					</nav>
 				</header>
+
 
 			<!-- Banner -->
 				<section id="banner">
 					<div class="content">
-						<header>
+						<header style="z-index: 100;">
+							<!-- <div>
+								<video autoPlay muted loop poster="" id="bgvid">
+									<source src="src/video/landing.mp4" type="video/mp4"></source>
+								</video>
+							</div> -->
 							<h2>What matters most to you?</h2>
 							<p>INSERT BS TEXT HERE<br />
 							INSERT MORE BS TEXT HERE.</p>
@@ -40,6 +47,11 @@
 						<span class="image"><img src="http://images.all-free-download.com/images/graphiclarge/blue_question_mark_icon_vector_281162.jpg" alt="" /></span>
 					</div>
 					<a href="#one" class="goto-next scrolly">Next</a>
+					<div>
+						<video autoPlay muted loop poster="" id="bgvid">
+							<source src="src/video/landing.mp4" type="video/mp4"></source>
+						</video>
+					</div>
 				</section>
 
 			<!-- One -->
@@ -228,4 +240,3 @@
 
 	</body>
 </html>
->>>>>>> bde10da39fff58e1e178b5255e166c31312c4959
