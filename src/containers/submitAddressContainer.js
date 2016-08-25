@@ -4,26 +4,30 @@ import {connect} from 'react-redux'
 import getAddress from '../actions/getAddress'
 import {browserHistory} from 'react-router'
 import fetchScores from '../actions/fetchScores'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 var text;
 class SubmitAddressContainer extends Component {
   handleSubmit(event) {
     event.preventDefault();
-
-    text = event.target.children[1].value;
+    text = event.target.firstChild.value;
     this.props.getAddress(text);
-    browserHistory.push(this.props.route)
+    browserHistory.push('preferences')
   }
 
   render(){
     return (
-        <div>
-          <form id="bar" onSubmit={this.handleSubmit.bind(this)}>
-            <script src='http://use.edgefonts.net/amaranth.js'></script>
-            <input className="button text" id="textBar" type='text' placeholder='Enter Address' />
-            {/* <input type='submit' /> */}
-          </form>
-        </div>
+      <ReactCSSTransitionGroup
+        component={"div"}
+        transitionName="landing"
+        transitionEnterTimeout={600}
+        transitionLeaveTimeout={600}
+        transitionAppear={true}>
+            <form id="bar" onSubmit={this.handleSubmit.bind(this)}>
+              <input className="button text" id="textBar" type='text' placeholder='Enter Address' />
+              {/* <input type='submit' /> */}
+            </form>
+      </ReactCSSTransitionGroup>
     )
   }
 }

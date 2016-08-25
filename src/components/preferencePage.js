@@ -32,14 +32,18 @@ class PreferencePage extends Component{
             transitionAppearTimeout={600}
             transitionLeaveTimeout={400}
             transitionAppear={true}>
-              <div className="slider-title col-md-12">
+              <div className="slider-title">
                 <h3>Choose your neighborhood categories</h3>
               </div>
-              <div className="preference-bar">
-                <PreferencesSliderContainer handleSubmit={this.handleSubmit.bind(this)} />
-                <div className="">
+              <div className="row">
+                <div className="preference-bar col-md-4">
+                  <PreferencesSliderContainer handleSubmit={this.handleSubmit.bind(this)} />
                 </div>
-                <div className="">
+                <div className="col-md-4">
+
+                </div>
+                <div className="col-md-4">
+
                 </div>
               </div>
           </ReactCSSTransitionGroup>

@@ -13,13 +13,7 @@ const PreferencesSlidersContainer = class extends Component {
   componentWillMount(){
     this.props.fetchScores(this.props.address)
   }
-
-  // componentWillReceiveProps(nextProps){
-  //
-  //   if (Object.keys(nextProps.scores.data).length !== 0) {
-  //     document.getElementById("submitForm").hidden = false
-  //   }
-  // }
+  
   render() {
     return(
       <div>
