@@ -28,7 +28,7 @@ const ScoresResult = class extends Component {
   }
 
   handleSearch(event){
-    debugger
+
     console.log(this.props) // Just to check
     // event.preventDefault(); // Wouldn't work with preventDefault somehow - error: preventDefault is not a function
     text = event.label; // Object {label: "235 Flatbush Avenue, Brooklyn, NY, United States", placeId: "ChIJsUpk6K5bwokRrA98w3GiK4w", isFixture: false, gmaps: Object, location: Object}
@@ -75,7 +75,7 @@ const ScoresResult = class extends Component {
       return Math.floor(score / totalWeight)
     })
     totalScore = Math.floor(totalScore / totalWeight)
-    debugger
+
     return(
       <div className="container-fluid">
         <TotalScoreBox totalScore={totalScore}/>

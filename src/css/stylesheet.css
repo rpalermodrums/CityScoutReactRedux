@@ -22,7 +22,7 @@
   margin-bottom: 10px
 }
 
-.totalScoreBox {
+#totalScoreBox {
   text-align: center;
 }
 
@@ -30,8 +30,16 @@
   padding: 0 auto;
 }
 
+#totalScoreBox {
+  align-items: center
+}
+
 #barChartBox {
   padding: 0 auto;
+}
+
+#preferenceMap {
+  float: left
 }
 
 #mapEmbed {
