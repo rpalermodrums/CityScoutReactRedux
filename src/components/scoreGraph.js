@@ -31,7 +31,7 @@ class ScoreGraph extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-  bindActionCreators({getPreferences}, dispatch)
+  return bindActionCreators({getPreferences}, dispatch)
 }
 
 export default connect(null, mapDispatchToProps)(ScoreGraph)

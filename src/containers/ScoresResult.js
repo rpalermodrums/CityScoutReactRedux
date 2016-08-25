@@ -15,6 +15,7 @@ const ScoresResult = class extends Component {
   handleSubmit(event){
     const categories = ['Safety', 'Education', 'Transportation', 'Parks', 'Rent'];
 
+
     event.preventDefault()
     var preferences = {}
     for (var i = 0; i < 4; i++) {
@@ -27,7 +28,8 @@ const ScoresResult = class extends Component {
   }
 
   render() {
-    var dictionary = {
+    debugger
+    const dictionary = {
       "accidents": "Safety",
       "crime": "Safety",
       "schools": "Education",
@@ -35,14 +37,21 @@ const ScoresResult = class extends Component {
       "bikes": "Transportation",
       "parks": "Parks"
     }
-    var scores = this.props.scores.own_score
-    var preferences = this.props.preferences
+    var scores = {}
+    var averages = {}
+    var preferences = {}
+    Object.keys(dictionary).forEach((key) => {
+      scores[key] = sessionStorage["own_score " + key]
+      averages[key] = sessionStorage["averages " + key]
+      preferences[dictionary[key]] = sessionStorage["preferences " + dictionary[key]]
+    })
+    debugger
     var labels = Object.keys(scores);
     var totalWeight = 0
     var totalScore =0
     var scoreData = labels.map((key) => {
-      var score = scores[key]
-      var weight = preferences[dictionary[key]]
+      var score = parseFloat(scores[key])
+      var weight = parseInt(preferences[dictionary[key]])
       if (weight === 0) {
         weight = 1
       }
@@ -55,6 +64,7 @@ const ScoresResult = class extends Component {
       return Math.floor(score / totalWeight)
     })
     totalScore = Math.floor(totalScore / totalWeight)
+    debugger
     return(
       <div className="container-fluid">
         <TotalScoreBox totalScore={totalScore}/>
@@ -68,7 +78,7 @@ const ScoresResult = class extends Component {
           </div>
 
           <div className="col-md-4" id="barChartBox">
-            <BarGraph keys={labels} scores={this.props.scores.attributes} averages={this.props.scores.averages} barChart={barChart}/>
+            <BarGraph keys={labels} scores={scores} averages={averages} barChart={barChart}/>
           </div>
         </div>
       </div>
@@ -78,9 +88,6 @@ const ScoresResult = class extends Component {
 
 function mapStateToProps(state) {
   return {
-    scores: state.scores.data,
-    averages: state.scores.data,
-    attributes: state.scores.data,
     preferences: state.preferences.preferences
 
   }

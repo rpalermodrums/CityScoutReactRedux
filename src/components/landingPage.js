@@ -4,6 +4,7 @@ import SubmitAddressContainer from '../containers/submitAddressContainer';
 
 
 export default function() {
+  Object.keys(sessionStorage).forEach((key) => sessionStorage.removeItem(key))
   return(
 
 

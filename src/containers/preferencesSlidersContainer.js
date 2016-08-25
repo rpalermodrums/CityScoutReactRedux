@@ -8,28 +8,34 @@ import Address from '../components/address'
 import fetchScores from '../actions/fetchScores'
 
 const categories = ['Safety', 'Education', 'Transportation', 'Parks'];
+const attributes = ["accidents", "crime", "schools", "subways", "bikes", "parks"]
 const PreferencesSlidersContainer = class extends Component {
 
   componentWillMount(){
-    this.props.fetchScores(this.props.address)
+    this.props.fetchScores(sessionStorage.address)
+
   }
 
-  // componentWillReceiveProps(nextProps){
-  //
-  //   if (Object.keys(nextProps.scores.data).length !== 0) {
-  //     document.getElementById("submitForm").hidden = false
-  //   }
-  // }
+  componentWillReceiveProps(nextProps){
+    var scores = nextProps.scores.data
+    attributes.map((key) => {
+      let keys = Object.keys(scores)
+      keys.filter((k) => {return k != 'boro' && k != 'neighborhood'}).map((k) => {
+        sessionStorage[k + " " + key] = scores[k][key]
+      })
+    })
+    debugger
+  }
   render() {
     return(
       <div>
-        <Address text={this.props.address}/>
+        <Address text={sessionStorage.address}/>
         <form onSubmit={this.props.handleSubmit.bind(this)}>
           {categories.map((category, idx) => {
             return(
                 <div id="slider">
                   <label>{category}</label>
-                  <Slider key={idx} category={category} id={category}/>
+                  <Slider handleClick={this.props.handleClick} key={idx} category={category} id={category}/>
                 </div>
             )
           })}

@@ -12,6 +12,7 @@ class SubmitAddressContainer extends Component {
 
     text = event.target.children[1].value;
     this.props.getAddress(text);
+    sessionStorage.address = text
     browserHistory.push(this.props.route)
   }
 

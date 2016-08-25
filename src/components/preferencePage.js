@@ -17,10 +17,16 @@ class PreferencePage extends Component{
       let value = parseInt(event.target.children[i].children[1].children[0].value, 10)
       let category = document.getElementById(`${categories[i]}`).id
       preferences[category] = value
+      sessionStorage["preferences " + category] = value
     }
     this.props.getPreferences(preferences)
     browserHistory.push('/results')
   }
+
+  handleClick(event){
+
+  }
+
   render(){
     return(
       <div className="container">
@@ -36,7 +42,7 @@ class PreferencePage extends Component{
                 <h3>Choose your neighborhood categories</h3>
               </div>
               <div className="preference-bar">
-                <PreferencesSliderContainer handleSubmit={this.handleSubmit.bind(this)} />
+                <PreferencesSliderContainer handleSubmit={this.handleSubmit.bind(this)} handleClick={this.handleClick.bind(this)} />
                 <div className="">
                 </div>
                 <div className="">
