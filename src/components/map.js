@@ -34,10 +34,6 @@ export default class Map extends Component {
   }
   render() {
     return(
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCw6aDG4XanzNqS_3FX_I8mCwPoKe817HE&"
-      async defer></script>
-      <div ref="map">
-      </div>
     )
   }
 }
