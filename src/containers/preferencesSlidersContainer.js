@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux'
 import getPreferences from '../actions/getPreferences'
 import Slider from '../components/preferenceSlider'
 import Address from '../components/address'
-
 import fetchScores from '../actions/fetchScores'
 
 const categories = ['Safety', 'Education', 'Transportation', 'Parks'];
@@ -13,10 +12,10 @@ const PreferencesSlidersContainer = class extends Component {
   componentWillMount(){
     this.props.fetchScores(this.props.address)
   }
-  
+
   render() {
     return(
-      <div>
+      <div className="slider-pref">
         <Address text={this.props.address}/>
         <form onSubmit={this.props.handleSubmit.bind(this)}>
           {categories.map((category, idx) => {

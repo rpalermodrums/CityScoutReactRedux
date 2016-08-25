@@ -23,26 +23,18 @@ class PreferencePage extends Component{
   }
   render(){
     return(
-      <div className="container">
-          <ReactCSSTransitionGroup
-            className="preferences-box"
-            component="div"
-            transitionName="route"
-            transitionEnterTimeout={600}
-            transitionAppearTimeout={600}
-            transitionLeaveTimeout={400}
-            transitionAppear={true}>
+      <div className="preferences-page">
+          <ReactCSSTransitionGroup className="preferences-box" component="div" transitionName="route" transitionEnterTimeout={600} transitionAppearTimeout={600} transitionLeaveTimeout={600} transitionAppear={true}>
               <div className="slider-title">
                 <h3>Choose your neighborhood categories</h3>
               </div>
               <div className="row">
-                <div className="preference-bar col-md-4">
+                <div className="preference-bar col-md-6">
+                <ReactCSSTransitionGroup className="sliders-test" component="div" transitionName="sliders-anim" transitionEnterTimeout={600} transitionAppearTimeout={600} transitionLeaveTimeout={600} transitionAppear={true}>
                   <PreferencesSliderContainer handleSubmit={this.handleSubmit.bind(this)} />
+                </ReactCSSTransitionGroup>
                 </div>
-                <div className="col-md-4">
-
-                </div>
-                <div className="col-md-4">
+                <div className="col-md-6">
 
                 </div>
               </div>

@@ -36,7 +36,6 @@ const ScoresResult = class extends Component {
       "parks": "Parks"
     }
     var scores = this.props.scores.own_score
-    debugger
     var preferences = this.props.preferences
     var labels = Object.keys(scores);
     var totalWeight = 0
