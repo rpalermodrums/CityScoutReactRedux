@@ -10,9 +10,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 var text;
 class SubmitAddressContainer extends Component {
-  constructor(props) {
-  super(props)
-}
   handleSubmit(event) {
     console.log(this.props) // Just to check
     event.preventDefault();
