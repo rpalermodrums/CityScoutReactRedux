@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps'
 
 export default class Map extends Component {
+  debugger
   render() {
-    debugger
     return(
       <section style={{display: "flex"}}>
         <GoogleMapLoader
@@ -11,19 +11,19 @@ export default class Map extends Component {
             <div
               // {...this.props}
               style={{
-                height: `100%`,
+                height: '500px',
+                width: '500px'
               }}
             />
           }
           googleMapElement={
             <GoogleMap
               ref={(map) => console.log(map)}
-              defaultZoom={16}
-
-              defaultCenter={{ lat: this.props.coords.lat, long: this.props.coords.lng }}
+              defaultZoom={15}
+              defaultCenter={{ lat: this.props.coords.coords.lat, lng: this.props.coords.coords.lng }}
               // onClick={this.handleMapClick}
             >
-            <Marker/>
+            <Marker />
           </GoogleMap>
           }
         />
