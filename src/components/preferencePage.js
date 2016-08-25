@@ -23,7 +23,6 @@ class PreferencePage extends Component{
     browserHistory.push('/results')
   }
   render(){
-    debugger
     return(
       <div className="container">
           <ReactCSSTransitionGroup
