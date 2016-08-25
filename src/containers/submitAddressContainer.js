@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import getAddress from '../actions/getAddress'
 import {browserHistory} from 'react-router'
-import fetchScores from '../actions/fetchScores'
-import getLocation from '../actions/getLocation'
 import GeoSuggest from 'react-geosuggest'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import getAddress from '../actions/getAddress'
+import fetchScores from '../actions/fetchScores'
+import getLocation from '../actions/getLocation'
 
 var text
 // var location;
