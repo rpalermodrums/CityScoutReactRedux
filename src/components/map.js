@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps'
 
 export default class Map extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   // function initMap() {
   //   const { lat, long } = this.props.initialPosition // Grab lat and long from this.props.initialPosition
