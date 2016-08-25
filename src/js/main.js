@@ -1,516 +1,306 @@
-Modernizr.addTest('iphone-safari', function () {
-   var deviceAgent = navigator.userAgent.toLowerCase(),
-   agentID = deviceAgent.match(/(iphone|ipod|ipad)/),
-   isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
-    if (agentID && isSafari ) {
-		return true;
-	}
-});
+/*
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
 
-function debounce(func, wait, immediate) {
-// utility to trigger events after set time (used on scroll principally)
-			var timeout;
-			return function() {
-				var context = this, args = arguments;
-				clearTimeout(timeout);
-				timeout = setTimeout(function() {
-					timeout = null;
-					if (!immediate) {
-						func.apply(context, args);
-					}
-				}, wait);
-				if (immediate && !timeout) {
-					func.apply(context, args);
-				}
-			};
-}
+(function($) {
 
-$(function() {
-
-	var 
-	$body = $('body'),
-	videoEle,
-	$videoBgSelector = $('#bg-video'),
-	videoBgEle = $videoBgSelector.get(0),
-	$header = $('.header'),
-	$modalVideo = $('.modal-video'),
-	$fadeControls = $('.modal-video .fade-control'),
-	$launchButton = $('.btn-launch-video'),
-	$hasHint = $('.has-hint'),
-	$hero = $('.level-hero'),
-	controlsTimer = null,
-	eventLastX = 0,
-	eventLastY = 0,
-	desktopView =  Modernizr.mq( "screen and ( min-width: 1200px )" ),
-	canPlaceholder = Modernizr.input.placeholder;
-	baseUrl = window.location.hostname;
-	
-	if ( Modernizr.video && desktopView && videoBgEle ) {
-			videoBgEle.load();
-			videoBgEle.play();
-		
-		if (typeof videoBgEle.loop == 'boolean') { 
-			// loop supported
-			videoBgEle.loop = true;
-		} 
-		else { 
-			// loop property not supported
-			videoBgEle.on('ended', function () {
-				this.currentTime = 0;
-				this.play();
-			}, 
-			false);
-		}
-		
-	}
-
-	else {
-		$videoBgSelector.remove();
-	}
-	
-	var checkModal = function() {
-		return $modalVideo.hasClass('active');
-	};
-	
-	 $(document).on('keydown.od47', function(e) {
-	 
-	 if ( checkModal() ) {
-			var target = $modalVideo.find('video');
-			switch(e.which) {
-			
-				case 27: clearVideo(); e.preventDefault();
-				break;
-				case 32: togglePlayPause(target); e.preventDefault();
-				break;
-				default: return; 
-			
-			}
-			// e.preventDefault();
-		}
-	});
-	
-	var clearVideo = function() {
-		// close modal video
-		var videoEle = $modalVideo.find('video').get(0);
-		$body.removeClass('modal-open');
-		$modalVideo.removeClass('playing').removeClass('active');
-	
-		videoEle.pause();
-		if ( $videoBgSelector.length ) {
-			videoBgEle.play();
-		}
-		
-		controlsTimer = null;
-
-		setTimeout(function() { 
-			if ( videoEle.readyState !== 0 ) {
-					videoEle.currentTime = 0;
-			}
-		}, 500);
-
-	};
-
-	var launchVideo = function( target ) {
-		
-		$body.addClass('modal-open');
-		$modalVideo.addClass('active').append('<i class="icon loading-icon"></i>');
-		var videoEle = $('#' + target).find('video').get(0);
-		videoEle.load();
-		// autotrigger play hack iOS (ipad)
-		videoEle.play();
-		videoEle.pause();
-		
-		$fadeControls.addClass('on');
-		beginFadeTimer(5000);
-		
-		
-		setTimeout(function() {
-			
-			videoEle.classList ? videoEle.classList.add('playing') : videoEle.className += ' playing';
-			
-			if ( videoBgEle && !videoBgEle.paused ) {
-				videoBgEle.pause();
-			}
-			videoEle.play();
-			$('.loading-icon').remove();
-			
-			videoEle.addEventListener('webkitendfullscreen', function() {
-				// clearVideo( videoEle );
-				clearVideo();
-			}, false);
-				
-			videoEle.addEventListener('ended', function() {
-				clearVideo();
-			}, false);
-			
-		},1000);
-	};
-	
-	// launch popup
-	$launchButton.on('click', function(e) {
-		if ( Modernizr.video  ) {
-			var target = $(this).data('videomodal');
-			launchVideo( target );
-			e.preventDefault();
-		} 
-		
-	});
-	
-	var togglePlayPause = function( trigger ) {
-		var videoEle = trigger.get(0);
-		// If the mediaPlayer is currently paused or has ended
-		if (videoEle.paused || videoEle.ended ) {
-			videoEle.play();
-			
-		}
-		// Otherwise it must currently be playing?
-		else {
-			videoEle.pause();
-		}
-	};
-	
-	$modalVideo.find('video').on('click', function ( e ){
-		var $this = $(this);
-		togglePlayPause( $this );
-	});
-	
-	$('.close-modal').on('click', function(e) {
-		// var videoModal = $(this).closest('.modal-video');
-		clearVideo();
-	});
-	
-	// timer fadeout on controls
-	var beginFadeTimer = function( duration ) {
-		$fadeControls.addClass('on');
-		if ( ! duration ) {
-			duration = 4000;
-		}
-		if ( controlsTimer ) {
-				clearTimeout( controlsTimer ); 
-				controlsTimer = null;
-			}
-			controlsTimer = setTimeout( fadeControlsOut , duration );
-	};
-	
-	var fadeControlsOut = function() {
-		$fadeControls.removeClass('on');
-	};
-	
-
-	$modalVideo.add($fadeControls).on('mousemove touchmove', function( e ) {
-			// click / touch restarts timer
-		if( eventLastX !== e.clientX || eventLastY !== e.clientY ) {
-
-				beginFadeTimer( 4000 );
-			}   
-			eventLastX = e.pageX;
-			eventLastY = e.pageY;
-	}).on('click', function(e) {
-		beginFadeTimer( 4000 );
-	});
-	
-	// hint arrows
-	var levelHandler = function()  {
-		
-		var st = $(window).scrollTop(),
-		wh = $(window).height(),
-		hh = $hero.outerHeight(true),
-		headerh = $header.outerHeight(true);
-		
-			if ( $hasHint.length ) {
-			
-				if ( wh > (hh+headerh) ) {
-						$hasHint.removeClass('active-state');
-				}
-				
-				else {
-		
-					if ( st <= 50 ) {
-						$hasHint.addClass('active-state');
-					}
-			
-					else {
-						$hasHint.removeClass('active-state');
-					}
-				}
-		}
-		
-	};
-	
-	// run on doc ready
-	levelHandler();
-	
-	var scrollTrigger = debounce(function() {
-		// re-run on scroll :)
-		levelHandler();
-	}, 1);
-	// doesnt play well to debounce this
-	
-	if ( canPlaceholder ) {
-		// switched. ie test
-		$('label').addClass('sr-only');
-	}
-	
-	// "retry" form 
-	$(document).on( 'click', '.reload-form', function( e ) {
-		e.preventDefault();
-		$(this).closest('.success').removeClass('active').prev().removeClass('hide');
-	});
-	
-	// bootstrap dropdown 
-	
-	$(document).on('click', '.dropdown-menu li', function( e ) {
-		var $t = $(this),
-		$parent = $t.parent(),
-		optVal = $(this).data('value'),
-		placeholder = $(this).data('placeholder'),
-		displayTarget = $parent.data('displaytarget'),
-		inputTarget = $parent.data('inputtarget'),
-		$inputTarget = $(inputTarget);
-		$t.addClass('disabled').siblings().removeClass('disabled');
-		$(displayTarget).text(placeholder);
-		if ( inputTarget ) {
-			$inputTarget.find('option[value="' + optVal + '"]').attr('selected', 'selected').siblings().removeAttr('selected');
-		}
-	});
-	
-	// bootstrap modal hack - click detection to see if click is within modal or not 
-	// this css: http://jsfiddle.net/sRmLV/22/
-	$('.modal-valign-helper').on('click', function(e) {
-		var target = $( e.target );
-		if ( target.is('.modal-dialog') ) {
-				$('.modal').modal('hide');
-			}
-
-		// e.preventDefault();
-	});
-	
-	// external links in new window 
-	$('a[href^="http:"]').not('[href*="'+baseUrl+'"]').addClass('external').attr({target: "_blank"});
-	
-	if ( window.location.hash && $('.is-section-archived').length ) {
-		var eleID = window.location.hash.split('#');
-		$('[aria-controls="' + eleID[1] + '"]').hide();
-	}
-	
-	if (window.history && window.history.pushState) {
-	
-		$('.show-section').on('click', function(e) {
-				e.preventDefault();
-				
-				var $t = $(this),
-				anchor = $t.attr('href'),
-				offset = $(anchor).offset();
-				
-				$t.hide();
-				history.pushState({}, "", anchor);
-				$(anchor).addClass('is-archive-visible');
-				$('body,html').animate({scrollTop: (offset.top)-50 }, 500);
-			});
-		
-	}
-	
-	
-	
-	// util - needed ?
-	$(window).on('load', function() {
-		$body.addClass('loaded');
-	});
-	
-	$(window).on('resize scroll',  scrollTrigger );
-	
-	// scroll to next level clicking on hint arrow - cheap!
-	$('.hint-arrow').on('click', function ( e ) {
-		var $parentLevel = $(this).closest('.level');
-		
-		if ( ! $parentLevel.length ) {
-			$parentLevel = $('.level-hero');
-		}
-		
-		var $nextLevel = $parentLevel.next('.level'),
-		target = $nextLevel.offset(),
-		target = target.top;
-		if ( $nextLevel ) {
-			$('body,html').animate({scrollTop: target}, 700, "linear");
-		}
+	skel.breakpoints({
+		xlarge: '(max-width: 1680px)',
+		large: '(max-width: 1280px)',
+		medium: '(max-width: 980px)',
+		small: '(max-width: 736px)',
+		xsmall: '(max-width: 480px)'
 	});
 
-	// scroll to next level - this should be merged with previous function
-	$('.btn-scroll').on('click', function ( e ) {
-		var href = $(this).attr('href');
-		
-		if ( href.length ) {
-			var $target = $(href);
-		}
-		
-		var target = $target.offset(),
-		target = target.top;
-		$('body,html').animate({scrollTop: target}, 700, "linear");
+	$(function() {
 
-		e.preventDefault();
+		var	$window = $(window),
+			$body = $('body');
 
-	});
-	
-	// colophon date 
-	var d = new Date(),
-	dateText = d.getFullYear();
-	$('#date-year').text(dateText);
-	
-	// LAUNCH VIDEO VIA DIRECT URL
-	var getHash = location.hash;
-	
-	if ( getHash === "#video" || getHash === "video" ) {
-		var videoID = $launchButton.data('videomodal');
-		launchVideo(videoID);
-	}
+		// Disable animations/transitions until the page has loaded.
+			$body.addClass('is-loading');
 
-	// TABBED CONTENT
-
-	$tabList = $('.inline-tabs');
-
- 	function measureTabs() {
-
- 		$tabList.each(function (e) {
-
-			var $t = $(this),
-			$listItems = $t.find('li'),
-			totalWidth = 0,
- 			$parent = $t.closest('.inline-tabs-wrapper'),
- 			ww = window.innerWidth;
-
-			$listItems.each( function() {
-				var $li = $(this);
-				totalWidth += $li.outerWidth( true );
-
-				// console.log( $li.offset() );
+			$window.on('load', function() {
+				window.setTimeout(function() {
+					$body.removeClass('is-loading');
+				}, 0);
 			});
 
-			console.log(totalWidth);
+		// Touch mode.
+			if (skel.vars.mobile)
+				$body.addClass('is-touch');
 
-			if ( totalWidth +30 > ww ) {
-				$parent.addClass('active-nav');
-				$t.width(totalWidth);
+		// Fix: Placeholder polyfill.
+			$('form').placeholder();
+
+		// Prioritize "important" elements on medium.
+			skel.on('+medium -medium', function() {
+				$.prioritize(
+					'.important\\28 medium\\29',
+					skel.breakpoint('medium').active
+				);
+			});
+
+		// Scrolly links.
+			$('.scrolly').scrolly({
+				speed: 2000
+			});
+
+		// Dropdowns.
+			$('#nav > ul').dropotron({
+				alignment: 'right',
+				hideDelay: 350
+			});
+
+		// Off-Canvas Navigation.
+
+			// Title Bar.
+				$(
+					'<div id="titleBar">' +
+						'<a href="#navPanel" class="toggle"></a>' +
+						'<span class="title">' + $('#logo').html() + '</span>' +
+					'</div>'
+				)
+					.appendTo($body);
+
+			// Navigation Panel.
+				$(
+					'<div id="navPanel">' +
+						'<nav>' +
+							$('#nav').navList() +
+						'</nav>' +
+					'</div>'
+				)
+					.appendTo($body)
+					.panel({
+						delay: 500,
+						hideOnClick: true,
+						hideOnSwipe: true,
+						resetScroll: true,
+						resetForms: true,
+						side: 'left',
+						target: $body,
+						visibleClass: 'navPanel-visible'
+					});
+
+			// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).
+				if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
+					$('#titleBar, #navPanel, #page-wrapper')
+						.css('transition', 'none');
+
+		// Parallax.
+		// Disabled on IE (choppy scrolling) and mobile platforms (poor performance).
+			if (skel.vars.browser == 'ie'
+			||	skel.vars.mobile) {
+
+				$.fn._parallax = function() {
+
+					return $(this);
+
+				};
 
 			}
-
 			else {
-				$parent.removeClass('active-nav');
-				$t.removeAttr('style');
+
+				$.fn._parallax = function() {
+
+					$(this).each(function() {
+
+						var $this = $(this),
+							on, off;
+
+						on = function() {
+
+							$this
+								.css('background-position', 'center 0px');
+
+							$window
+								.on('scroll._parallax', function() {
+
+									var pos = parseInt($window.scrollTop()) - parseInt($this.position().top);
+
+									$this.css('background-position', 'center ' + (pos * -0.15) + 'px');
+
+								});
+
+						};
+
+						off = function() {
+
+							$this
+								.css('background-position', '');
+
+							$window
+								.off('scroll._parallax');
+
+						};
+
+						skel.on('change', function() {
+
+							if (skel.breakpoint('medium').active)
+								(off)();
+							else
+								(on)();
+
+						});
+
+					});
+
+					return $(this);
+
+				};
+
+				$window
+					.on('load resize', function() {
+						$window.trigger('scroll');
+					});
+
 			}
-			
-		});
 
+		// Spotlights.
+			var $spotlights = $('.spotlight');
 
-	}
+			$spotlights
+				._parallax()
+				.each(function() {
 
-	var resizeTabs = debounce(function() {
+					var $this = $(this),
+						on, off;
 
-		measureTabs();
-	}, 50);
+					on = function() {
 
-	$(window).on('load resize', function() {
-		resizeTabs();
-	});
+						// Use main <img>'s src as this spotlight's background.
+							$this.css('background-image', 'url("' + $this.find('.image.main > img').attr('src') + '")');
 
-	function prevNextTabs(e, $t ) {
-		e.preventDefault();
+						// Enable transitions (if supported).
+							if (skel.canUse('transition')) {
 
-		var 
+								var top, bottom, mode;
 
-		$target = $t.parent(),
-		$wrapper = $target.find('.inline-tabs-list-wrapper'),
-		$scroller = $wrapper.find('.inline-tabs'),
-		$listItems = $target.find('li'),
-		$firstInView = $target.find('.first-in-view'),
-		distance,
-		animSpeed = 400,
-		currentScroll = $wrapper.scrollLeft();
+								// Side-specific scrollex tweaks.
+									if ($this.hasClass('top')) {
 
-		// can click, will click
-		if( ! $t.hasClass('disabled') ) {
+										mode = 'top';
+										top = '-20%';
+										bottom = 0;
 
-			if ( $t.hasClass('btn-prev') ) {
+									}
+									else if ($this.hasClass('bottom')) {
 
-				if ( $firstInView.prev().length ) {
+										mode = 'bottom-only';
+										top = 0;
+										bottom = '20%';
 
-					$firstInView.removeClass('first-in-view').prev().addClass('first-in-view');
+									}
+									else {
 
-				}
+										mode = 'middle';
+										top = 0;
+										bottom = 0;
 
-				distance = $firstInView.outerWidth();
+									}
 
-				$wrapper.animate({scrollLeft: ( currentScroll - distance ) }, animSpeed, function () {
+								// Add scrollex.
+									$this.scrollex({
+										mode:		mode,
+										top:		top,
+										bottom:		bottom,
+										initialize:	function(t) { $this.addClass('inactive'); },
+										terminate:	function(t) { $this.removeClass('inactive'); },
+										enter:		function(t) { $this.removeClass('inactive'); },
 
-						$target.find('.btn-next').removeClass('disabled');
+										// Uncomment the line below to "rewind" when this spotlight scrolls out of view.
 
-						var scrollLeft = $wrapper.scrollLeft();
+										//leave:	function(t) { $this.addClass('inactive'); },
 
-						if ( scrollLeft <= 0 ) {
-							$t.addClass('disabled');
-						}
+									});
+
+							}
+
+					};
+
+					off = function() {
+
+						// Clear spotlight's background.
+							$this.css('background-image', '');
+
+						// Disable transitions (if supported).
+							if (skel.canUse('transition')) {
+
+								// Remove scrollex.
+									$this.unscrollex();
+
+							}
+
+					};
+
+					skel.on('change', function() {
+
+						if (skel.breakpoint('medium').active)
+							(off)();
+						else
+							(on)();
+
+					});
+
 				});
 
+		// Wrappers.
+			var $wrappers = $('.wrapper');
 
+			$wrappers
+				.each(function() {
 
-			}
+					var $this = $(this),
+						on, off;
 
-			else {
+					on = function() {
 
-				// switch class to next item if we cab
+						if (skel.canUse('transition')) {
 
-				if ( $firstInView.next().length ) {
+							$this.scrollex({
+								top:		250,
+								bottom:		0,
+								initialize:	function(t) { $this.addClass('inactive'); },
+								terminate:	function(t) { $this.removeClass('inactive'); },
+								enter:		function(t) { $this.removeClass('inactive'); },
 
-					$firstInView.removeClass('first-in-view').next().addClass('first-in-view');
+								// Uncomment the line below to "rewind" when this wrapper scrolls out of view.
 
-				}
+								//leave:	function(t) { $this.addClass('inactive'); },
 
-				distance = $firstInView.outerWidth();
+							});
 
-				$wrapper.animate({scrollLeft: (distance + currentScroll) }, animSpeed, function () {
-
-						$target.find('.btn-prev').removeClass('disabled');
-						var scrollLeft = $wrapper.scrollLeft();
-
-
-						// alert ( "scroll left:" + scrollLeft + " width of scroller: " + $scroller.width() + " width of wrapper: " + $wrapper.width() );
-
-
-						if ( ( $wrapper.width() + scrollLeft ) >= $scroller.width()  ) {
-							$t.addClass('disabled');
 						}
+
+					};
+
+					off = function() {
+
+						if (skel.canUse('transition'))
+							$this.unscrollex();
+
+					};
+
+					skel.on('change', function() {
+
+						if (skel.breakpoint('medium').active)
+							(off)();
+						else
+							(on)();
+
+					});
+
 				});
 
-			}	
+		// Banner.
+			var $banner = $('#banner');
 
-			
-
-		}
-		
-	}
-
-	$('.inline-tabs-nav').on('click', function(e) {
-		
-		prevNextTabs(e,  $(this) );
+			$banner
+				._parallax();
 
 	});
 
-	var $tabs = $('.inline-tabs a');
-	$tabs.on('click', function (e) {
-		
-		var $this = $(this),
-		h = $this.attr('href'),
-		$parent = $this.closest('.inline-tabs'),
-		$li = $parent.find('li'),
-		$target = $(h);
-
-		$li.removeClass('active');
-		$this.parent().addClass('active');
-
-		$target.addClass('active').siblings().removeClass('active');
-
-		e.preventDefault();
-	});
-
-
-	
-});
+})(jQuery);

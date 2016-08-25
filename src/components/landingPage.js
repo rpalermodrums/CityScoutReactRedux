@@ -11,7 +11,7 @@ export default function() {
           transitionEnterTimeout={1000}
           transitionLeaveTimeout={1000}
           transitionAppear={true}>
-            <h1 id="title">CityScout</h1>
+            <h1 id="title">cityScout</h1>
           </ReactCSSTransitionGroup>
           <SubmitAddressContainer />
         </div>
