@@ -8,13 +8,14 @@ import getLocation from '../actions/getLocation'
 import GeoSuggest from 'react-geosuggest'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-var text;
+var text
+// var location;
 class SubmitAddressContainer extends Component {
   handleSubmit(event) {
     console.log(this.props) // Just to check
-    debugger
-    // event.preventDefault(); // Wouldn't work with preventDefault somehow
-    text = event.label; // Based on object result
+    // event.preventDefault(); // Wouldn't work with preventDefault somehow - error: preventDefault is not a function
+    text = event.label; // Object {label: "235 Flatbush Avenue, Brooklyn, NY, United States", placeId: "ChIJsUpk6K5bwokRrA98w3GiK4w", isFixture: false, gmaps: Object, location: Object}
+    this.location = event.location; // Object {lat: 40.6811549, lng: -73.97486609999999}
     this.props.getAddress(text);
     this.props.getLocation(this.location);
     browserHistory.push('preferences')
@@ -32,6 +33,8 @@ class SubmitAddressContainer extends Component {
             style={{'suggests': {'listStyleType': 'none'}, 'suggestItem': {'color':'white', 'cursor': 'pointer'}}}
             className="button text"
             id="textBar"
+            placeholder="Enter address"
+            // onSuggestSelect is triggered when a suggest is selected. Location object contains lat long.
             onSuggestSelect={this.handleSubmit.bind(this)}/>
       </ReactCSSTransitionGroup>
     )
