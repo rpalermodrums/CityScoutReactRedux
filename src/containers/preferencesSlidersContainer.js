@@ -20,7 +20,8 @@ const PreferencesSlidersContainer = class extends Component {
         sessionStorage[k + " " + key] = scores[k][key]
       })
     })
-    debugger
+    sessionStorage['boro'] = nextProps.scores.data.boro
+    sessionStorage['neighborhood'] = nextProps.scores.data.neighborhood
   }
   render() {
     return(

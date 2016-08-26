@@ -43,7 +43,7 @@ class PreferencePage extends Component{
                 </ReactCSSTransitionGroup>
                 </div>
                 <div className="col-md-6" ref="map">
-                  <Map address={this.props.address} coords={this.props.coords} />
+                  <Map id='preferenceMap' address={this.props.address} coords={this.props.coords} />
                 </div>
               </div>
           </ReactCSSTransitionGroup>

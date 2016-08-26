@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps'
 
 export default class Map extends Component {
-  debugger
   render() {
     return(
       <section style={{display: "flex"}}>
