@@ -8,6 +8,8 @@ import BarGraph from '../components/barGraph'
 import radarChart from '../components/radarChart'
 import barChart from '../components/barChart'
 import getPreferences from '../actions/getPreferences'
+import getAddress from '../actions/getAddress'
+import getLocation from '../actions/getLocation'
 import {bindActionCreators} from 'redux'
 import {browserHistory} from 'react-router'
 
@@ -15,15 +17,16 @@ var text
 
 const ScoresResult = class extends Component {
   handleSubmit(event){
-    const categories = ['Safety', 'Education', 'Transportation', 'Parks', 'Rent'];
+    const categories = ['Safety', 'Education', 'Transportation', 'Parks'];
     event.preventDefault()
     var preferences = {}
-    for (var i = 0; i < 4; i++) {
-
+    for (var i = 0; i < categories.length; i++) {
       let value = parseInt(event.target.children[i].children[1].children[0].value, 10)
       let category = document.getElementById(`${categories[i]}`).id
       preferences[category] = value
+      sessionStorage[`preferences ${categories[i]}`] = value
     }
+    debugger
     this.props.getPreferences(preferences)
   }
 
@@ -103,7 +106,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({getPreferences}, dispatch)
+  return bindActionCreators({getPreferences, getAddress, getLocation}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScoresResult)
