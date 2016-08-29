@@ -1,6 +1,9 @@
-Rails API: www.github.com/laushinka/cityscout
+Rails API Reference: www.github.com/laushinka/cityscout
 
 CITY SCOUT NYC
+
+Reason for Development:
+    Being Web Development students seeking positions in New York City, we wanted to build an app that improves upon the already          existing mass of websites that "score" various neighborhoods. Where our app is different, however, is how we allow the user to        specify which things they care more or less about, so the score can reflect that. Also we wanted to visualize how that score was      composed. We used ChartsJS to show what the score for each category is and how that score was calculated. 
 
 Current Features:
     1. Enter an address in New York City.
