@@ -22,3 +22,14 @@ Planned Features and changes:
     6. Show rental listings within radius of target location
     7. Scoring by neighborhood in addition to by address.
     8. Compare address against the neighborhood average and boro average in addition to comparing against NYC as a whole.
+    
+    
+Contributors:
+    1. Ryan Palermo
+        www.github.com/rpalermodrums
+    2. Laurie Malau
+        www.github.com/laushinka
+    3. Julie Marin
+        www.github.com/juliemarin
+    4. Steven McGrath
+        www.github.com/pun1ntended
