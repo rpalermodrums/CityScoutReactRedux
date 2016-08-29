@@ -9,23 +9,22 @@ import getLocation from '../actions/getLocation'
 
 
 var text
-
 class LandingPage extends Component{
   handleSubmit(event) {
-    console.log(this.props) // Just to check
-    // event.preventDefault(); // Wouldn't work with preventDefault somehow - error: preventDefault is not a function
-    text = event.label; // Object {label: "235 Flatbush Avenue, Brooklyn, NY, United States", placeId: "ChIJsUpk6K5bwokRrA98w3GiK4w", isFixture: false, gmaps: Object, location: Object}
-    var location = event.location; // Object {lat: 40.6811549, lng: -73.97486609999999}
+    console.log(this.props)
+    text = event.label;
+    var location = event.location;
     this.props.getAddress(text);
     sessionStorage.address = text
     this.props.getLocation(location);
     browserHistory.push('/preferences')
   }
+
   render(){
     Object.keys(sessionStorage).forEach((key) => sessionStorage.removeItem(key))
     return(
-      <div className="" id="landing-page">
-        <div id="landing-page">
+      <div className="">
+        <div id="landing-page" >
           <ReactCSSTransitionGroup
             transitionName="logo"
             transitionEnterTimeout={1000}
@@ -42,6 +41,5 @@ class LandingPage extends Component{
 function mapDispatchToProps(dispatch){
   return bindActionCreators({getAddress, getLocation}, dispatch)
 }
-
 
 export default connect(null, mapDispatchToProps)(LandingPage)

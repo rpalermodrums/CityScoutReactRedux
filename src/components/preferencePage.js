@@ -24,10 +24,6 @@ class PreferencePage extends Component{
     browserHistory.push('/results')
   }
 
-  handleClick(event){
-
-  }
-
   render(){
     return(
       <div className="preferences-page">
@@ -38,8 +34,7 @@ class PreferencePage extends Component{
               <div className="row">
                 <div className="preference-bar col-md-6">
                 <ReactCSSTransitionGroup className="sliders-test" component="div" transitionName="sliders-anim" transitionEnterTimeout={600} transitionAppearTimeout={600} transitionLeaveTimeout={600} transitionAppear={true}>
-                  <PreferencesSliderContainer handleSubmit={this.handleSubmit.bind(this)}
-                  handleClick={this.handleClick.bind(this)} />
+                  <PreferencesSliderContainer handleSubmit={this.handleSubmit.bind(this)} />
                 </ReactCSSTransitionGroup>
                 </div>
                 <div className="col-md-6" ref="map">
@@ -49,7 +44,7 @@ class PreferencePage extends Component{
           </ReactCSSTransitionGroup>
       </div>
     )
-    }
+  }
 }
 
 function mapDispatchToProps(dispatch) {

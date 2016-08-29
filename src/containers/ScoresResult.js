@@ -28,11 +28,9 @@ const ScoresResult = class extends Component {
   }
 
   handleSearch(event){
-
-    console.log(this.props) // Just to check
-    // event.preventDefault(); // Wouldn't work with preventDefault somehow - error: preventDefault is not a function
-    text = event.label; // Object {label: "235 Flatbush Avenue, Brooklyn, NY, United States", placeId: "ChIJsUpk6K5bwokRrA98w3GiK4w", isFixture: false, gmaps: Object, location: Object}
-    this.location = event.location; // Object {lat: 40.6811549, lng: -73.97486609999999}
+    console.log(this.props)
+    text = event.label;
+    this.location = event.location;
     this.props.getAddress(text);
     sessionStorage.address = text
     this.props.getLocation(this.location);

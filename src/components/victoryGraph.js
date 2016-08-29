@@ -4,28 +4,28 @@ import {VictoryBar, VictoryGroup, range, random} from 'victory';
 
 const VictoryGraph = class extends Component {
   constructor(props) {
-   super(props);
-   this.state = {
-     data: this.getData(),
-   };
- }
+    super(props);
+    this.state = {
+      data: this.getData(),
+    };
+  }
 
- getData() {
+  getData() {
    const num = Math.random(3, 5);
-   return [1, 2, 3, 4].map((index) => {
-     return range(num).map((i) => {
-       return {x: i, y: random(2, 10)};
-     })
-   });
- }
+    return [1, 2, 3, 4].map((index) => {
+      return range(num).map((i) => {
+        return {x: i, y: random(2, 10)};
+      })
+    });
+  }
 
- componentDidMount() {
-   setInterval(() => {
-     this.setState({
-       data: this.getData(),
-     });
-   }, 3000);
- }
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({
+        data: this.getData(),
+      });
+    }, 3000);
+  }
 
  render() {
    return (
