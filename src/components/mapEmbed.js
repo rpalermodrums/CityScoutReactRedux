@@ -1,8 +1,6 @@
 import React from 'react'
 
 const MapEmbed = function(){
-  debugger
-
   return (
     <iframe height="500"
       width="500"
