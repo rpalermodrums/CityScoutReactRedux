@@ -1,10 +1,13 @@
 #!/bin/sh
-set -ex
+set -e
 
-if [ "$1" = 'build' ]; then
-    exec convox build --rack $2 --app $3 -m convox.yml --description $REVISION
-elif [ "$1" = 'deploy' ]; then
-    exec convox deploy --wait --rack $2 --app $3 -m convox.yml --description $REVISION
+if [ "$1" = 'runserver' ]; then
+    if [ "$NODE_ENV" = 'development' ]; then
+        exec su-exec mighty yarn run start
+    else
+        chown -R mighty:mighty $APP_DIR/build;
+        exec su-exec mighty node server.js
+    fi
 fi
 
 exec "$@"
