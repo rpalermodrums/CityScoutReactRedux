@@ -1,0 +1,275 @@
+@font-face {
+    font-family: 'yorkwhiteletterregular';
+    src: url('yorkwhiteletter-webfont.woff2') format('woff2'),
+         url('yorkwhiteletter-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#five {
+  background-color: rgba(166, 171, 210, 1)
+}
+
+#root {
+  height: 100vh;
+  width: 100%;
+}
+
+#bar {
+  margin: 0 auto;
+  padding-top: 20px;
+  width: 50%;
+}
+
+#textBar {
+  width: 100%;
+  margin-bottom: 10px
+}
+
+#totalScoreBox {
+  text-align: center;
+}
+
+#radarChartBox {
+  padding: 0 auto;
+}
+
+#totalScoreBox {
+  align-items: center
+}
+
+#barChartBox {
+  padding: 0 auto;
+}
+
+#preferenceMap {
+  float: left
+}
+
+#mapEmbed {
+  width: 100%;
+  align-content: center;
+}
+
+h1 {
+  margin-top: 0;
+  font-family: 'yorkwhiteletterregular', sans-serif;
+}
+
+#title {
+  font-size: 15em;
+  font-family: 'yorkwhiteletterregular', sans-serif;
+  color: rgb(237, 237, 237);
+  text-shadow: 4px 4px 2px rgba(43, 43, 43, 1);
+}
+
+#landing-page {
+  align-content: center;
+  text-align: center;
+  padding-top: 6%;
+  overflow: visible;
+}
+
+.slider-title {
+  margin-top: 3em;
+  text-align: center;
+}
+
+.preferences-box {
+  align-content: center;
+}
+
+/*.preference-bar {
+  align-content: center;
+}*/
+
+#container {
+  height: 100%;
+  background-image: url("./cityscout_logo.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.search {
+  width: 100%;
+  height: 100vh;
+}
+
+.route-enter, .route-appear {
+  animation: slideIn 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+.route-leave {
+  animation: slideOut 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+.landing-enter, .landing-appear {
+  animation: slideIn 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+.landing-leave {
+  animation: slideOut 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+.logo-enter, .logo-appear {
+  animation: slideOut 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+/*form {
+  align-content: center;
+  width: 75%;
+  margin-top: 3em;
+
+}*/
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100px, 0);
+  };
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  };
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 25px, 0);
+  };
+  100% {
+    opacity: 1;
+    /*transform: translate3d(0, 0, 0);*/
+  };
+}
+
+.Image {
+  position: absolute;
+  height: 400px;
+  width: 400px;
+}
+
+.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+}
+
+.example-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0;
+}
+
+.link-active {
+  color: #bbbbbb;
+  text-decoration: none;
+}
+
+.search-bar {
+  align-content: center;
+  padding-top: 460px;
+}
+
+body {
+  background-color: #ccccff;
+}
+
+
+video#bgvid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 125%;
+    min-height: 125%;
+    width: auto;
+    height: 135%;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    /*background: url(polina.jpg) no-repeat;*/
+    background-size: contain;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
+input[type="text"] {
+  text-align: center;
+  height: 60px;
+  font-size: 35px;
+  font-weight: bolder;
+  display: inline-block;
+  font-family: "Lato";
+  font-weight: 200;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  padding: 3px;
+  width: 100%;
+  background: none;
+  z-index: 3;
+  transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+
+input[type="text"]:focus:hover {
+  border-bottom: 1px solid #BBB;
+}
+
+input[type="text"]:focus {
+  width: 700px;
+  z-index: 1;
+  border-bottom: 1px solid #BBB;
+  cursor: text;
+}
+
+.preferences-page {
+  max-width: 100%;
+  padding: 10px;
+  margin: 10px 10%;
+}
+
+.sliders-form {
+  padding-bottom: 30px;
+}
+
+.sliders-anim {
+
+}
+
+.slider-pref {
+  margin: 0 30px;
+  padding: 20px 30px;
+  text-align: center;
+}
+
+.sliders-anim-leave {
+  animation: slideFromLeft 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+.sliders-anim-enter, .sliders-anim-appear {
+  animation: slideFromLeft 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+
+@keyframes slideFromLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100px, 0, 0);
+  };
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  };
+}

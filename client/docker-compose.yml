@@ -1,0 +1,13 @@
+version: "2.1"
+
+services:
+  client:
+    build:
+      context: .
+    image: client:${REVISION:-latest}
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "${PUBLIC_HTTPS_PORT:-443}:3000"
+    labels:
+      - convox.port.443.protocol=tls
